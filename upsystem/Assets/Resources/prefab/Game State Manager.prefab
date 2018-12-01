@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d36c29af38c2b34fbf8e43e7f3a23f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingShips: []
 --- !u!114 &114874095985390104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,3 +68,4 @@ MonoBehaviour:
   maxTurnsForBearAttack: 6
   minJumpsToWin: 3
   maxJumpsToWin: 6
+  fleetManager: {fileID: 114157499196297526}
