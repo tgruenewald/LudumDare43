@@ -88,12 +88,6 @@ public class Ship : MonoBehaviour
     //Properties
     public String Name { get; set; }
     public String State { get { return _state.ToString(); } }
-    public int GetCrew { get { return _crew; } }
-    public int GetSupply { get { return _supply; } }
-    public int GetFuel { get { return _fuel; } }
-    public int GetMaxCrew { get { return _maxCrew; } }
-    public int GetMaxSupply { get { return _maxSupply; } }
-    public int GetMaxFuel { get { return _maxFuel; } }
 
 
     /// <summary>
