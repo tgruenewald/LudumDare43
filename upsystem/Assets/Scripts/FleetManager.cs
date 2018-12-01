@@ -5,13 +5,21 @@ using UnityEngine;
 
 public class FleetManager : MonoBehaviour {
 
-    List<Ship> fleet;
+    List<Ship> fleet = new List<Ship>();
     public List<Ship> startingShips = new List<Ship>();
 
     public void AddShipToFleet(Ship ship)
     {
         fleet.Add(ship);
-        // TODO : Listen to events
+        GameStateManager.Instance.Jumped += ship.Jump;
+        GameStateManager.Instance.TurnEnded += ship.EndTurn;
+    }
+
+    public void RemoveShipFromFleet(Ship ship)
+    {
+        GameStateManager.Instance.Jumped -= ship.Jump;
+        GameStateManager.Instance.TurnEnded -= ship.EndTurn;
+        fleet.Remove(ship);
     }
 
     void FillStartingFleet()
@@ -22,7 +30,6 @@ public class FleetManager : MonoBehaviour {
         }
     }
 
-    // Use this for initialization
     void Start () 
     {
         FillStartingFleet();
