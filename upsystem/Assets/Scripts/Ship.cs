@@ -95,6 +95,7 @@ public class Ship : MonoBehaviour
     /// </summary>
     public virtual void Jump()
     {
+        if (!_healthy) _state = ShipState.Destroyed;
         //Check fuel status
         if (_fuel > 0)
         {
@@ -129,10 +130,6 @@ public class Ship : MonoBehaviour
                 if (_healthy)
                 {
                     _healthy = false;
-                }
-                else
-                {
-                    _state = ShipState.Destroyed;
                 }
             }
         }
@@ -185,7 +182,7 @@ public class Ship : MonoBehaviour
         }
     }
 
-    public virtual void Transfer(bool TransferringToShip, Resource ResourceType, int Amount)
+    private void Transfer(bool TransferringToShip, Resource ResourceType, int Amount)
     {
         if(TransferringToShip)
         {
