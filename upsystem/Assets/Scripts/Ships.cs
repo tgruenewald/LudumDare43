@@ -35,8 +35,8 @@ public abstract class Ship : MonoBehaviour
     }
 
     //Properties
-    public string Name { get; set; }
-    public string State { get { return _state.ToString; } }
+    public String Name { get; set; }
+    public String State { get { return _state.ToString(); } }
     public int Crew { get { return _crew; } }
     public int Supply { get { return _supply; } }
     public int Fuel { get { return _fuel; } }
@@ -164,7 +164,7 @@ public abstract class Ship : MonoBehaviour
                     break;
             }
         }
-        _state = ShipState.Transfering
+        _state = ShipState.Transfering;
     }
 
     /// <summary>
