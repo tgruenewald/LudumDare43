@@ -73,6 +73,23 @@ public abstract class Ship : MonoBehaviour
         {
             _state = ShipState.Destroyed;
         }
+        //Check if the ship takes damage
+        if(_state != ShipState.Destroyed)
+        {
+            float rand = UnityEngine.Random.Range(1, 100);
+            //Ship takes damage if result less than a certain number
+            if(rand < 34)
+            {
+                if (_healthy)
+                {
+                    _healthy = false;
+                }
+                else
+                {
+                    _state = ShipState.Destroyed;
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -219,11 +236,46 @@ public abstract class Ship : MonoBehaviour
         }
         else if(_state == ShipState.Scouting)
         {
-            //When happens here?
+            _state = ShipState.Idle;
         }
         else
         {
             _state = ShipState.Idle;
+        }
+    }
+
+    /// <summary>
+    /// When scouting, use this method to add resources
+    /// </summary>
+    /// <param name="ResourceType"></param>
+    /// <param name="Amount"></param>
+    public void AddResource(Resource ResourceType, int Amount)
+    {
+        switch (ResourceType)
+        {
+            case Resource.Crew:
+                if (_crew < _maxCrew)
+                {
+                    _crew += Amount;
+                    if (_crew > _maxCrew) _crew = _maxCrew;
+                }
+                break;
+            case Resource.Supply:
+                if(_supply < _maxSupply)
+                {
+                    _supply += Amount;
+                    if (_supply > _maxSupply) _supply = _maxSupply;
+                }
+                break;
+            case Resource.Fuel:
+                if(_fuel < _maxFuel)
+                {
+                    _fuel += Amount;
+                    if (_fuel > _maxFuel) _fuel = _maxFuel;
+                }
+                break;
+            default:
+                break;
         }
     }
 }
