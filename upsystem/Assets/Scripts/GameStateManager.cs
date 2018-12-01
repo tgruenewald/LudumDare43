@@ -32,28 +32,28 @@ public class GameStateManager : MonoBehaviour
     int turnOfBearArrival = 4;
     int numberOfJumpsToWin = 4;
 
-    void ShipActionEventHandler(Ship.ShipState state)
-    {
-        canJump = false; // As soon as a ship takes an action we can not jump
-        if(state = Ship.Transfering)
-        {
-            // two ships are transfering
-            if(gameState = Ship.Transfering)
-            {
-                gameState = defaultState;
-            }
-            else
-            {
-                gameState = transfer;
-            }
-        }
-        // TODO
-        //else if(state = //Ship.Sacrifice)
-        //{
-        // 
-        //  gameState = default;
-        //}
-    }
+    //void ShipActionEventHandler(ShipState state)
+    //{
+    //    canJump = false; // As soon as a ship takes an action we can not jump
+    //    if(state == ShipState.Transfering)
+    //    {
+    //        // two ships are transfering
+    //        if(gameState == ShipState.Transfering)
+    //        {
+    //            gameState = defaultState;
+    //        }
+    //        else
+    //        {
+    //            gameState = transfer;
+    //        }
+    //    }
+    //    // TODO
+    //    //else if(state = //Ship.Sacrifice)
+    //    //{
+    //    // 
+    //    //  gameState = default;
+    //    //}
+    //}
 
     public GameState GetState()
     {
@@ -111,7 +111,7 @@ public class GameStateManager : MonoBehaviour
 
     void BearsArrive()
     {
-        gameState = sacrifice;
+        //gameState = sacrifice;
         bearsArrived = true;
         Debug.Log("Bears Arrived =-0");
     }
