@@ -385,6 +385,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8db70bb764374ac69c8b3371626b6b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _crew: 3
+  _supply: 23
+  _fuel: 1
+  _maxCrew: 4
+  _maxSupply: 32
+  _maxFuel: 2
 --- !u!114 &114171893086680714
 MonoBehaviour:
   m_ObjectHideFlags: 1
