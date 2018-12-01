@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
-    public enum GameState { sacrifice, transfer, defaultState};
+    public enum GameState { sacrifice, transfer, defaultState };
     public static GameStateManager Instance;
 
     public delegate void TurnEndEventHandler();
@@ -19,6 +19,7 @@ public class GameStateManager : MonoBehaviour
     public int minJumpsToWin = 3;
     public int maxJumpsToWin = 6;
 
+    public FleetManager fleetManager;
     bool bearsArrived = false;
     public bool GetBearsArrived()
     {
@@ -32,28 +33,31 @@ public class GameStateManager : MonoBehaviour
     int turnOfBearArrival = 4;
     int numberOfJumpsToWin = 4;
 
-    //void ShipActionEventHandler(ShipState state)
-    //{
-    //    canJump = false; // As soon as a ship takes an action we can not jump
-    //    if(state == ShipState.Transfering)
-    //    {
-    //        // two ships are transfering
-    //        if(gameState == ShipState.Transfering)
-    //        {
-    //            gameState = defaultState;
-    //        }
-    //        else
-    //        {
-    //            gameState = transfer;
-    //        }
-    //    }
-    //    // TODO
-    //    //else if(state = //Ship.Sacrifice)
-    //    //{
-    //    // 
-    //    //  gameState = default;
-    //    //}
-    //}
+    public void IncreaseBearAttack()
+    {
+        turnOfBearArrival--;
+    }
+
+    public void ShipActionHandler(FleetManager.ShipActions action)
+    {
+        canJump = false; // As soon as a ship takes an action we can not jump
+        if(action == FleetManager.ShipActions.transfer)
+        {
+            // two ships are transfering
+            if(gameState == GameState.transfer)
+            {
+                gameState = GameState.defaultState;
+            }
+            else
+            {
+                gameState = GameState.transfer;
+            }
+        }
+        else if (action == FleetManager.ShipActions.sacrifice)
+        {
+            gameState = GameState.defaultState;
+        }
+    }
 
     public GameState GetState()
     {
@@ -68,6 +72,7 @@ public class GameStateManager : MonoBehaviour
         {
             TurnEnded();
         }
+        fleetManager.UpdateScoutingShips();
         if (turnNumber >= turnOfBearArrival)
         {
             BearsArrive();
@@ -111,7 +116,7 @@ public class GameStateManager : MonoBehaviour
 
     void BearsArrive()
     {
-        //gameState = sacrifice;
+        gameState = GameState.sacrifice;
         bearsArrived = true;
         Debug.Log("Bears Arrived =-0");
     }
