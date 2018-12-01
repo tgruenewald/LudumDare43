@@ -5,7 +5,7 @@ public enum ShipType { Unknown, Scout, Supply, Fuel, Passenger };
 public enum ShipState { Idle, Scouting, Transfering, Repairing, Destroyed };
 public enum Resource { Crew,Supply,Fuel};
 
-public abstract class Ship : MonoBehaviour
+public class Ship : MonoBehaviour
 {
     //Current variables
     private int _crew = 0;
@@ -19,6 +19,32 @@ public abstract class Ship : MonoBehaviour
     private int _maxCrew = 2;
     private int _maxSupply = 2;
     private int _maxFuel = 2;
+
+    private ActionSelector mActionSelector;
+
+    // Use this for initialization
+    void Start()
+    {
+        for (int i = 0; i < this.gameObject.transform.childCount; i++)
+        {
+            if (this.gameObject.transform.GetChild(i).CompareTag("ActionSelectors"))
+            {
+                mActionSelector = this.gameObject
+                                      .transform
+                                      .GetChild(i)
+                                      .gameObject
+                                      .GetComponent<ActionSelector>();
+                break;
+            }
+        }
+
+    }
+
+    void OnMouseUp()
+    {
+        mActionSelector.Toggle();
+    }
+
 
     protected void Initialize(int CurrentCrew, int CurrentSupply, int CurrentFuel, bool Healthy, ShipType SType, int MaxCrew, int MaxSupply, int MaxFuel)
     {
