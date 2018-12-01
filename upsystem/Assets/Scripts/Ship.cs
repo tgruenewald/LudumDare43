@@ -8,16 +8,22 @@ public enum Resource { Crew,Supply,Fuel};
 public class Ship : MonoBehaviour
 {
     //Current variables
+    [SerializeField]
     private int _crew = 0;
+    [SerializeField]
     private int _supply = 0;
+    [SerializeField]
     private int _fuel = 0;
     private bool _healthy = true;
     private ShipType _type = ShipType.Unknown;
     private ShipState _state = ShipState.Idle;
 
     //max variables
+    [SerializeField]
     private int _maxCrew = 2;
+    [SerializeField]
     private int _maxSupply = 2;
+    [SerializeField]
     private int _maxFuel = 2;
 
     public int MaxCrew { get { return _maxCrew; } }
@@ -74,14 +80,14 @@ public class Ship : MonoBehaviour
     protected void Initialize(int CurrentCrew, int CurrentSupply, int CurrentFuel, bool Healthy, ShipType SType, int MaxCrew, int MaxSupply, int MaxFuel)
     {
         //Set up  the new ship
-        _crew = CurrentCrew;
-        _supply = CurrentSupply;
-        _fuel = CurrentFuel;
+        //_crew = CurrentCrew;
+        //_supply = CurrentSupply;
+        //_fuel = CurrentFuel;
         _healthy = Healthy;
         _type = SType;
-        _maxCrew = MaxCrew;
-        _maxSupply = MaxSupply;
-        _maxFuel = MaxFuel;
+        //_maxCrew = MaxCrew;
+        //_maxSupply = MaxSupply;
+        //_maxFuel = MaxFuel;
         _state = ShipState.Idle;
     }
 
