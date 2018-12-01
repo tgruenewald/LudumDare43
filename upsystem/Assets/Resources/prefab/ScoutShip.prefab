@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 224870043373603588}
   - component: {fileID: 212084319606586796}
   - component: {fileID: 61069623529710236}
-  - component: {fileID: 114303353042505922}
+  - component: {fileID: 114131636021016784}
   m_Layer: 5
   m_Name: ScoutShip
   m_TagString: Untagged
@@ -139,6 +139,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &114131636021016784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1471732234584782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a606d1049030444c85154c98f92bc25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114178672915173610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,17 +218,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114303353042505922
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1471732234584782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6b6fd058fb394288a791418afbe7c14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114369666223453430
 MonoBehaviour:
   m_ObjectHideFlags: 1

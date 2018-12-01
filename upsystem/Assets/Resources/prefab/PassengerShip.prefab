@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 224855281749811390}
   - component: {fileID: 212628454412854942}
   - component: {fileID: 61265366769391680}
-  - component: {fileID: 114365644159685412}
+  - component: {fileID: 114023247714694926}
   m_Layer: 5
   m_Name: PassengerShip
   m_TagString: Untagged
@@ -180,6 +180,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114023247714694926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1374065117399038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f49325bfe6bc4040ad96f561106b1f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114302788134858690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -275,17 +286,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114365644159685412
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1374065117399038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6b6fd058fb394288a791418afbe7c14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114561869356612224
 MonoBehaviour:
   m_ObjectHideFlags: 1
