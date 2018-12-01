@@ -20,7 +20,15 @@ public class Ship : MonoBehaviour
     private int _maxSupply = 2;
     private int _maxFuel = 2;
 
+    public int MaxCrew { get { return _maxCrew; } }
+    public int MaxSupply { get { return _maxSupply; } }
+    public int MaxFuel { get { return _maxFuel; } }
+    public int Crew { get { return _crew; } }
+    public int Supply { get { return _supply; } }
+    public int Fuel { get { return _fuel; } }
+
     private ActionSelector mActionSelector;
+    private StatsSliders mStatsSliders;
 
     // Use this for initialization
     void Start()
@@ -34,7 +42,14 @@ public class Ship : MonoBehaviour
                                       .GetChild(i)
                                       .gameObject
                                       .GetComponent<ActionSelector>();
-                break;
+            }
+            else if (this.gameObject.transform.GetChild(i).CompareTag("StatsSliders"))
+            {
+                mStatsSliders = this.gameObject
+                                      .transform
+                                      .GetChild(i)
+                                      .gameObject
+                                      .GetComponent<StatsSliders>();
             }
         }
 
@@ -43,6 +58,16 @@ public class Ship : MonoBehaviour
     void OnMouseUp()
     {
         mActionSelector.Toggle();
+    }
+
+    private void OnMouseEnter()
+    {
+        mStatsSliders.Show();
+    }
+
+    private void OnMouseExit()
+    {
+        mStatsSliders.Hide();
     }
 
 
@@ -63,12 +88,7 @@ public class Ship : MonoBehaviour
     //Properties
     public String Name { get; set; }
     public String State { get { return _state.ToString(); } }
-    public int Crew { get { return _crew; } }
-    public int Supply { get { return _supply; } }
-    public int Fuel { get { return _fuel; } }
-    public int MaxCrew { get { return _maxCrew; } }
-    public int MaxSupply { get { return _maxSupply; } }
-    public int MaxFuel { get { return _maxFuel; } }
+
 
     /// <summary>
     /// Update the ship status during a jump
@@ -215,6 +235,7 @@ public class Ship : MonoBehaviour
     /// </summary>
     public virtual void Scout()
     {
+        Debug.Log("Scouting.");
         if (_state == ShipState.Idle)
         {
             _state = ShipState.Scouting;
@@ -226,6 +247,7 @@ public class Ship : MonoBehaviour
     /// </summary>
     public virtual void Repair()
     {
+        Debug.Log("Repairing.");
         if (_state == ShipState.Idle)
         {
             _state = ShipState.Repairing;
@@ -305,35 +327,3 @@ public class Ship : MonoBehaviour
         }
     }
 }
-
-class Scout : Ship
-{
-    public void initialize(int StartingCrew, int StartingSupply, int StartingFuel, bool Damaged)
-    {
-        base.Initialize(StartingCrew, StartingSupply, StartingFuel, !Damaged, ShipType.Scout, 2, 2, 4);
-    }
-}
-
-class Supply : Ship
-{
-    public void initialize(int StartingCrew, int StartingSupply, int StartingFuel, bool Damaged)
-    {
-        base.Initialize(StartingCrew, StartingSupply, StartingFuel, !Damaged, ShipType.Supply, 4, 32, 2);
-        }
-}
-
-class Fuel : Ship
-{
-    public void initialize(int StartingCrew, int StartingSupply, int StartingFuel, bool Damaged)
-    {
-        base.Initialize(StartingCrew, StartingSupply, StartingFuel, !Damaged, ShipType.Fuel, 4, 2, 12);
-    }
-}
-
-class Passenger : Ship
-{
-    public void initialize(int StartingCrew, int StartingSupply, int StartingFuel, bool Damaged)
-    {
-        base.Initialize(StartingCrew, StartingSupply, StartingFuel, !Damaged, ShipType.Passenger, 8, 2, 2);
-    }
-} 

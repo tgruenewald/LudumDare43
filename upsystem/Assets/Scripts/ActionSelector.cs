@@ -25,12 +25,15 @@ using UnityEngine.UI;
 public class ActionSelector : MonoBehaviour {
 
     // Getting children objects 
+    private Ship mShip;
     private GameObject mActionContainer;
     private Button mScoutButton, mXferButton, mRepairButton;
 
 	// Use this for initialization
 	void Start () 
     {
+        mShip = this.transform.parent.gameObject.GetComponent<Ship>();
+
         mActionContainer = this.gameObject
                                .transform.GetChild(0)
                                .gameObject;
@@ -52,9 +55,9 @@ public class ActionSelector : MonoBehaviour {
                             .GetComponent<Button>();
 
         //Calls the TaskOnClick/TaskWithParameters/ButtonClicked method when you click the Button
-        mScoutButton.onClick.AddListener(ScoutClicked);
+        mScoutButton.onClick.AddListener(mShip.Scout);
         mXferButton.onClick.AddListener(XferClicked);
-        mRepairButton.onClick.AddListener(RepairClicked);
+        mRepairButton.onClick.AddListener(mShip.Repair);
 	}
 
     // Set the buttons to show or not show depending on their current state
@@ -77,7 +80,6 @@ public class ActionSelector : MonoBehaviour {
 
     public void ScoutClicked()
     {
-        Debug.Log("Scout clicked.");
     }
 
     public void XferClicked()
@@ -87,6 +89,6 @@ public class ActionSelector : MonoBehaviour {
 
     public void RepairClicked()
     {
-        Debug.Log("Repair clicked.");
+        
     }
 }
