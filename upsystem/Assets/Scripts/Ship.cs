@@ -61,16 +61,27 @@ public class Ship : MonoBehaviour
 
     }
 
+    public void EndShipTurn()
+    {
+        mActionSelector.Hide();
+        SpriteRenderer renderer = this.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer;
+        renderer.color = new Color(1f, 1f, 1f, .5f);
+    }
+
     void OnMouseUp()
     {
-        if(GameStateManager.Instance.GetState() == GameStateManager.GameState.defaultState)
+        if(_state == ShipState.Idle)
         {
-            mActionSelector.Toggle();
+            if (GameStateManager.Instance.GetState() == GameStateManager.GameState.defaultState)
+            {
+                mActionSelector.Toggle();
+            }
+            else if (GameStateManager.Instance.GetState() == GameStateManager.GameState.transfer)
+            {
+                GameStateManager.Instance.fleetManager.ShipAction(FleetManager.ShipActions.transfer, this);
+            }
         }
-        else if(GameStateManager.Instance.GetState() == GameStateManager.GameState.transfer)
-        {
-            GameStateManager.Instance.fleetManager.ShipAction(FleetManager.ShipActions.transfer, this);
-        }
+
     }
 
     private void OnMouseEnter()
@@ -158,6 +169,8 @@ public class Ship : MonoBehaviour
     /// <returns></returns>
     public static bool Transfer(Ship ShipTo, Ship ShipFrom, Resource ResourceType, ref int Amount)
     {
+        ShipTo.EndShipTurn();
+        ShipFrom.EndShipTurn();
         //Check if either ship is busy
         if ((ShipFrom._state == ShipState.Idle || ShipFrom._state == ShipState.Transfering) &&
             (ShipTo._state == ShipState.Idle || ShipTo._state == ShipState.Transfering))
@@ -245,6 +258,7 @@ public class Ship : MonoBehaviour
     /// </summary>
     public virtual void Scout()
     {
+        EndShipTurn();
         Debug.Log("Scouting.");
         if (_state == ShipState.Idle)
         {
@@ -257,6 +271,8 @@ public class Ship : MonoBehaviour
     /// </summary>
     public virtual void Repair()
     {
+        EndShipTurn();
+
         Debug.Log("Repairing.");
         if (_state == ShipState.Idle)
         {
@@ -287,7 +303,9 @@ public class Ship : MonoBehaviour
     /// </summary>
     public virtual void EndTurn()
     {
-        if(_state == ShipState.Repairing)
+        SpriteRenderer renderer = this.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer;
+        renderer.color = new Color(1f, 1f, 1f, 1f);
+        if (_state == ShipState.Repairing)
         {
             _healthy = true;
             _state = ShipState.Idle;
