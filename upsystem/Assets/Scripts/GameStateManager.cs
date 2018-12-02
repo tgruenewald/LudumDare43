@@ -36,10 +36,17 @@ public class GameStateManager : MonoBehaviour
     int turnOfBearArrival = 4;
     int numberOfJumpsToWin = 4;
 
+    static GameObject transferDialog;
+
     public void IncreaseBearAttack()
     {
         turnOfBearArrival--;
     }
+
+    public static void CloseTransferDialog() {
+        Destroy(transferDialog);
+    }
+
 
     public void ShipActionHandler(FleetManager.ShipActions action, Ship ship)
     {
@@ -55,7 +62,14 @@ public class GameStateManager : MonoBehaviour
                 Debug.Log(GameStateManager.Instance);
 
                 Debug.Log("The real transfer");
-                GameObject transferDialog = GameObject.Find("TransferDialog");
+
+
+
+                transferDialog = (GameObject) Instantiate(Resources.Load("prefab/TransferDialog"),new Vector3(0, 0, 0), Quaternion.identity); //GameObject.Find("TransferDialog");
+                transferDialog.transform.SetParent(GameObject.Find("DialogCanvas").transform);
+                transferDialog.transform.localPosition =  new Vector3(0f, 0f, 0f);
+                transferDialog.transform.localScale = new Vector3(1f, 1f, 1f);
+                
 
                 // yeah, yeah, it is kinda backwards.  Ship2 is the first ship
                 transferDialog.GetComponent<TransferDialog>().setShip1(transferShip2);
