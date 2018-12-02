@@ -12,7 +12,7 @@ public class FleetManager : MonoBehaviour {
     public int startingCrewMin = 1;
     public int startingCrewMax = 4;
 
-    List<Ship> fleet = new List<Ship>();
+    public List<Ship> fleet = new List<Ship>();
     List<ScoutingFinds> scoutingShips = new List<ScoutingFinds>();
     Canvas canvas;
     public GameObject canidateSpotObject;
@@ -179,7 +179,6 @@ public class FleetManager : MonoBehaviour {
 
         DialogManager.ScoutingReturnedMessage(ship);
     }
-
 
 
     void Scout(ScoutingFinds scoutingFind)
