@@ -342,6 +342,45 @@ public class Ship : MonoBehaviour
         }
     }
 
+    public void SetResource(Resource ResourceType, int Amount)
+    {
+        switch (ResourceType)
+        {
+            case Resource.Crew:
+                if (Amount < _maxCrew)
+                {
+                    _crew = Amount;
+                }
+                else
+                {
+                    _crew = _maxCrew;
+                }
+                break;
+            case Resource.Supply:
+                if (_supply < _maxSupply)
+                {
+                    _supply = Amount;
+                }
+                else
+                {
+                    _supply = _maxSupply;
+                }
+                break;
+            case Resource.Fuel:
+                if (_fuel < _maxFuel)
+                {
+                    _fuel = Amount;
+                }
+                else
+                {
+                    _fuel = _maxFuel;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
     /// <summary>
     /// When scouting, use this method to add resources
     /// </summary>
