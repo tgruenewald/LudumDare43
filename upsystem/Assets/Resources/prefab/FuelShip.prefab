@@ -663,7 +663,6 @@ MonoBehaviour:
   _maxCrew: 4
   _maxSupply: 2
   _maxFuel: 12
-  Name: Fuel Ship
 --- !u!114 &114268777371945082
 MonoBehaviour:
   m_ObjectHideFlags: 1
