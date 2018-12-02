@@ -38,15 +38,15 @@ public class FleetManager : MonoBehaviour {
     public int minSupplyFound = 1;
     public int maxSupplyFound = 10;
 
+    public void ClearScoutingShips()
+    {
+        scoutingShips.Clear();
+    }
     public void ShipAction(ShipActions action, Ship ship)
     {
         GameStateManager.Instance.ShipActionHandler(action, ship);
 
-        if (action == ShipActions.sacrifice)
-        {
-            fleet.Remove(ship);
-        }
-        else if (action == ShipActions.repair)
+        if (action == ShipActions.repair)
         {
             ship.Repair();
         }
