@@ -91,6 +91,12 @@ public class Ship : MonoBehaviour
         mStatsSliders.Show();
     }
 
+    public void HideActions()
+    {
+        Debug.Log("hiding actions");
+        mActionSelector.Hide();
+    }
+
 	void OnMouseDown()
 	{
         // more game jam bandaid silliness!

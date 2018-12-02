@@ -63,12 +63,14 @@ public class ActionSelector : MonoBehaviour {
     // Set the buttons to show or not show depending on their current state
     public void Toggle()
     {
+        GameStateManager.Instance.CloseActionsExceptFor(mShip);
         mActionContainer.SetActive(!mActionContainer.activeInHierarchy);
     }
 
     // Show the buttons
     public void Show()
     {
+        GameStateManager.Instance.CloseActionsExceptFor(mShip);
         mActionContainer.SetActive(true);
     }
 
