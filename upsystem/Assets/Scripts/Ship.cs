@@ -17,6 +17,8 @@ public class Ship : MonoBehaviour
     private bool _healthy = true;
     private ShipType _type = ShipType.Unknown;
     private ShipState _state = ShipState.Idle;
+    private GameObject mHazardSprite;
+    private GameObject mDamageEffect;
 
     //max variables
     [SerializeField]
@@ -57,11 +59,31 @@ public class Ship : MonoBehaviour
                                       .gameObject
                                       .GetComponent<StatsSliders>();
             }
+            else if (this.gameObject.transform.GetChild(i).CompareTag("HazardSprite"))
+            {
+                mHazardSprite = this.gameObject
+                                      .transform
+                                      .GetChild(i)
+                                      .gameObject;
+            }
+            else if (this.gameObject.transform.GetChild(i).CompareTag("DamageEffect"))
+            {
+                mDamageEffect = this.gameObject
+                                      .transform
+                                      .GetChild(i)
+                                      .gameObject;
+            }
         }
 
     }
 
-    public void EndShipTurn()
+	void Update()
+	{
+        mHazardSprite.SetActive(_fuel <= 0);
+        mDamageEffect.SetActive(!_healthy);
+	}
+
+	public void EndShipTurn()
     {
         mActionSelector.Hide();
         SpriteRenderer renderer = this.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer;
@@ -93,7 +115,6 @@ public class Ship : MonoBehaviour
 
     public void HideActions()
     {
-        Debug.Log("hiding actions");
         mActionSelector.Hide();
     }
 

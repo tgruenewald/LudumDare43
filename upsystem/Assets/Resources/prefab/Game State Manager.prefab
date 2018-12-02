@@ -1509,14 +1509,14 @@ AudioListener:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1258487706957392}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!81 &81889000498245758
 AudioListener:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1351127029044896}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &114011413467429780
 MonoBehaviour:
   m_ObjectHideFlags: 1
