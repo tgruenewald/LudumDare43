@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
-    public Ship transferShip1;
-    public Ship transferShip2;
+    Ship transferShip1;
+    Ship transferShip2;
 
     public enum GameState { sacrifice, transfer, defaultState };
     public static GameStateManager Instance;
@@ -79,6 +79,7 @@ public class GameStateManager : MonoBehaviour
             TurnEnded();
         }
         fleetManager.UpdateScoutingShips();
+        fleetManager.RemoveDestroyedShips();
         if (turnNumber >= turnOfBearArrival)
         {
             BearsArrive();

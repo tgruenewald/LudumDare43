@@ -5,8 +5,19 @@ using UnityEngine;
 
 public class FleetManager : MonoBehaviour {
 
+    public int startingFuelMin = 1;
+    public int startingFuelMax = 4;
+    public int startingSupplyMin = 1;
+    public int startingSupplyMax = 4;
+    public int startingCrewMin = 1;
+    public int startingCrewMax = 4;
+
     List<Ship> fleet = new List<Ship>();
     List<ScoutingFinds> scoutingShips = new List<ScoutingFinds>();
+    Canvas canvas;
+    public GameObject canidateSpotObject;
+    List<Vector3> canidateSpots = new List<Vector3>();
+    public List<GameObject> shipsWeCanSpawn;
 
     class ScoutingFinds
     {
@@ -97,16 +108,50 @@ public class FleetManager : MonoBehaviour {
             else
             {
                 Debug.Log("Destroy");
+                canidateSpots.Add(ship.transform.position);
                 Destroy(ship.gameObject);
             }
         }
         fleet = fleet2;
     }
+
+    void CreateShip()
+    {
+        GameObject shipObject = Instantiate(shipsWeCanSpawn[Random.Range(0, shipsWeCanSpawn.Count)]);
+        int index = Random.Range(0, canidateSpots.Count);
+        Vector3 position = canidateSpots[index];
+        canidateSpots.RemoveAt(index);
+        shipObject.transform.parent = canvas.transform;
+        shipObject.transform.position = position;
+        Ship ship = shipObject.GetComponent(typeof(Ship)) as Ship;
+        fleet.Add(ship);
+
+        // Set starting values
+        int fuel = Random.Range(startingFuelMin, startingFuelMax);
+        int supply = Random.Range(startingFuelMin, startingFuelMax);
+        int crew = Random.Range(startingFuelMin, startingFuelMax);
+        int i = Random.Range(0, 3);
+        if(i == 0)
+        {
+            fuel = 0;
+        }
+        if (i == 1)
+        {
+            supply = 0;
+        }
+        if (i == 2)
+        {
+            crew = 0;
+        }
+        ship.SetResource(Resource.Fuel, fuel);
+        ship.SetResource(Resource.Supply, supply);
+        ship.SetResource(Resource.Crew, crew);
+    }
     void ReturnShip(ScoutingFinds ship)
     {
         for(int i = 0; i < ship.shipsFound; i++)
         {
-            // add ships;
+            CreateShip();
         }
         ship.ship.gameObject.SetActive(true);
 
@@ -187,12 +232,23 @@ public class FleetManager : MonoBehaviour {
     {
         foreach(Ship ship in startingShips)
         {
+            int index = Random.Range(0, canidateSpots.Count);
+            Vector3 position = canidateSpots[index];
+            canidateSpots.RemoveAt(index);
+            ship.transform.position = position;
+            ship.transform.parent = canvas.transform;
             AddShipToFleet(ship);
         }
     }
 
     void Start () 
     {
+        GameObject canvasObj = GameObject.Find("Canvas");
+        canvas = canvasObj.GetComponent(typeof(Canvas)) as Canvas;
+        foreach (Transform trans in canidateSpotObject.transform)
+        {
+            canidateSpots.Add(trans.position);
+        }
         FillStartingFleet();
     }
 }
