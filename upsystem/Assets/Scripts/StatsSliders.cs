@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class StatsSliders : MonoBehaviour {
 
     private Slider mCrewSlider, mSuppliesSlider, mFuelSlider;
+    private Text mCrewSliderText, mSuppliesSliderText, mFuelSliderText;
     private Ship mParentShip;
 
 	// Use this for initialization
@@ -15,15 +16,31 @@ public class StatsSliders : MonoBehaviour {
                            .gameObject
                            .GetComponent<Slider>();
 
+        mCrewSliderText = this.transform
+                              .GetChild(0)
+                              .GetChild(1)
+                              .gameObject.GetComponent<Text>();
+
         mSuppliesSlider = this.transform
                           .GetChild(1)
                           .gameObject
                           .GetComponent<Slider>();
 
+        mSuppliesSliderText = this.transform
+                              .GetChild(1)
+                              .GetChild(1)
+                              .gameObject.GetComponent<Text>();
+
         mFuelSlider = this.transform
                             .GetChild(2)
                             .gameObject
                             .GetComponent<Slider>();
+
+        mFuelSliderText = this.transform
+                              .GetChild(2)
+                              .GetChild(1)
+                              .gameObject.GetComponent<Text>();
+
         mParentShip = this.transform.parent.GetComponent<Ship>();
 
         mCrewSlider.maxValue = mParentShip.MaxCrew;
@@ -49,16 +66,19 @@ public class StatsSliders : MonoBehaviour {
     public void SetCrew(int inCrew)
     {
         mCrewSlider.value = inCrew;
+        mCrewSliderText.text = inCrew.ToString();
     }
 
     public void SetSupplies(int inSupplies)
     {
         mSuppliesSlider.value = inSupplies;
+        mSuppliesSliderText.text = inSupplies.ToString();
     }
 
     public void SetFuel(int inFuel)
     {
         mFuelSlider.value = inFuel;
+        mFuelSliderText.text = inFuel.ToString();
     }
 
     // Set the buttons to show or not show depending on their current state
