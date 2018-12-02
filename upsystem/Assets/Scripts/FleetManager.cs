@@ -85,6 +85,14 @@ public class FleetManager : MonoBehaviour {
     
     public void AddShipToFleet(Ship ship)
     {
+        string result = string.Empty;
+        int value = (int)(Random.Range(0.0f, 100.0f));
+        while (--value >= 0)
+        {
+            result = (char)('A' + value % 26) + result;
+            value /= 26;
+        }
+        ship.Name = result + fleet.Count.ToString() + ((int)(Random.Range(0.0f, 100.0f))).ToString();
         fleet.Add(ship);
         GameStateManager.Instance.Jumped += ship.Jump;
         GameStateManager.Instance.TurnEnded += ship.EndTurn;

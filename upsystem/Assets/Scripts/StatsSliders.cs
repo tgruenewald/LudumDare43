@@ -7,6 +7,7 @@ public class StatsSliders : MonoBehaviour {
 
     private Slider mCrewSlider, mSuppliesSlider, mFuelSlider;
     private Text mCrewSliderText, mSuppliesSliderText, mFuelSliderText;
+    private Text mNameText;
     private Ship mParentShip;
 
 
@@ -71,6 +72,12 @@ public class StatsSliders : MonoBehaviour {
         mSuppliesSlider.maxValue = mParentShip.MaxSupply;
         mFuelSlider.maxValue = mParentShip.MaxFuel;
 
+        mNameText = this.transform
+                              .GetChild(3)
+                        .gameObject.GetComponent<Text>();
+        mNameText.fontSize = 10;
+        //Debug.Log(mNameText.text);
+
         Initialize( mParentShip.Crew, mParentShip.Supply, mParentShip.Fuel );
 		
 	}
@@ -87,7 +94,7 @@ public class StatsSliders : MonoBehaviour {
 
     public void Initialize(int inCrew, int inSupplies, int inFuel)
     {
-        
+        mNameText.text = mParentShip.Name;
         SetCrew(inCrew);
         SetSupplies(inSupplies);
         SetFuel(inFuel);
@@ -120,6 +127,7 @@ public class StatsSliders : MonoBehaviour {
         mCrewSlider.gameObject.SetActive(!mCrewSlider.gameObject.activeInHierarchy);
         mSuppliesSlider.gameObject.SetActive(!mSuppliesSlider.gameObject.activeInHierarchy);
         mFuelSlider.gameObject.SetActive(!mFuelSlider.gameObject.activeInHierarchy);
+        mNameText.gameObject.SetActive(!mNameText.gameObject.activeInHierarchy);
         // Hacky game jam code!
         this.Initialize(mCrew, mSupplies, mFuel);
     }
@@ -130,6 +138,7 @@ public class StatsSliders : MonoBehaviour {
         mCrewSlider.gameObject.SetActive(true);
         mSuppliesSlider.gameObject.SetActive(true);
         mFuelSlider.gameObject.SetActive(true);
+        mNameText.gameObject.SetActive(true);
 
         // Hacky game jam code!
         this.Initialize(mCrew, mSupplies, mFuel);
@@ -141,6 +150,7 @@ public class StatsSliders : MonoBehaviour {
         mCrewSlider.gameObject.SetActive(false);
         mSuppliesSlider.gameObject.SetActive(false);
         mFuelSlider.gameObject.SetActive(false);
+        mNameText.gameObject.SetActive(false);
     }
 
 }
