@@ -87,10 +87,16 @@ public class Ship : MonoBehaviour
                 GameStateManager.Instance.fleetManager.ShipAction(FleetManager.ShipActions.transfer, this);
             }
         }
-
+        mStatsSliders.Show();
     }
 
-    private void OnMouseEnter()
+	void OnMouseDown()
+	{
+        // more game jam bandaid silliness!
+        mStatsSliders.Show();
+	}
+
+	private void OnMouseOver()
     {
         mStatsSliders.Show();
     }
