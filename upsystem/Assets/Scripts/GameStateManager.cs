@@ -7,6 +7,7 @@ public class GameStateManager : MonoBehaviour
     Ship transferShip1;
     Ship transferShip2;
 
+
     public enum GameState { sacrifice, transfer, defaultState };
     public static GameStateManager Instance;
 
@@ -36,10 +37,17 @@ public class GameStateManager : MonoBehaviour
     int turnOfBearArrival = 4;
     int numberOfJumpsToWin = 4;
 
+    static GameObject transferDialog;
+
     public void IncreaseBearAttack()
     {
         turnOfBearArrival--;
     }
+
+    public static void CloseTransferDialog() {
+        Destroy(transferDialog);
+    }
+
 
     public void ShipActionHandler(FleetManager.ShipActions action, Ship ship)
     {
@@ -49,8 +57,29 @@ public class GameStateManager : MonoBehaviour
             // two ships are transfering
             if(gameState == GameState.transfer)
             {
+                // this is when the final ship gets selected
                 transferShip1 = ship;
                 gameState = GameState.defaultState;
+                Debug.Log(GameStateManager.Instance);
+
+                Debug.Log("The real transfer");
+
+
+
+                transferDialog = (GameObject) Instantiate(Resources.Load("prefab/TransferDialog"),new Vector3(0, 0, 0), Quaternion.identity); //GameObject.Find("TransferDialog");
+                transferDialog.transform.SetParent(GameObject.Find("DialogCanvas").transform);
+                transferDialog.transform.localPosition =  new Vector3(0f, 0f, 0f);
+                transferDialog.transform.localScale = new Vector3(1f, 1f, 1f);
+                
+
+                // yeah, yeah, it is kinda backwards.  Ship2 is the first ship
+                transferDialog.GetComponent<TransferDialog>().setShip1(transferShip2);
+
+                // annd.. ship 1 is the 2nd ship selected.
+                transferDialog.GetComponent<TransferDialog>().setShip2(transferShip1);
+                
+                GameObject dialogCam = GameObject.Find("DialogCamera");
+                dialogCam.GetComponent<Camera>().enabled = true;                
             }
             else
             {
