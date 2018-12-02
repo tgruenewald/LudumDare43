@@ -18,6 +18,7 @@ public class Ship : MonoBehaviour
     private ShipType _type = ShipType.Unknown;
     private ShipState _state = ShipState.Idle;
     private GameObject mHazardSprite;
+    private GameObject mDamageEffect;
 
     //max variables
     [SerializeField]
@@ -65,13 +66,21 @@ public class Ship : MonoBehaviour
                                       .GetChild(i)
                                       .gameObject;
             }
+            else if (this.gameObject.transform.GetChild(i).CompareTag("DamageEffect"))
+            {
+                mDamageEffect = this.gameObject
+                                      .transform
+                                      .GetChild(i)
+                                      .gameObject;
+            }
         }
 
     }
 
 	void Update()
 	{
-        mHazardSprite.SetActive(_fuel <= 0 || !_healthy);
+        mHazardSprite.SetActive(_fuel <= 0);
+        mDamageEffect.SetActive(!_healthy);
 	}
 
 	public void EndShipTurn()
