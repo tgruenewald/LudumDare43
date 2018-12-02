@@ -9,6 +9,9 @@ public class StatsSliders : MonoBehaviour {
     private Text mCrewSliderText, mSuppliesSliderText, mFuelSliderText;
     private Ship mParentShip;
 
+
+    private int mCrew, mSupplies, mFuel;
+
     void Refresh()
     {
         needsRefresh = true;
@@ -35,8 +38,9 @@ public class StatsSliders : MonoBehaviour {
 
         mCrewSliderText = this.transform
                               .GetChild(0)
-                              .GetChild(1)
+                              .GetChild(2)
                               .gameObject.GetComponent<Text>();
+        mCrewSliderText.fontSize = 15;
 
         mSuppliesSlider = this.transform
                           .GetChild(1)
@@ -45,8 +49,9 @@ public class StatsSliders : MonoBehaviour {
 
         mSuppliesSliderText = this.transform
                               .GetChild(1)
-                              .GetChild(1)
+                              .GetChild(2)
                               .gameObject.GetComponent<Text>();
+        mSuppliesSliderText.fontSize = 15;
 
         mFuelSlider = this.transform
                             .GetChild(2)
@@ -55,8 +60,10 @@ public class StatsSliders : MonoBehaviour {
 
         mFuelSliderText = this.transform
                               .GetChild(2)
-                              .GetChild(1)
+                              .GetChild(2)
                               .gameObject.GetComponent<Text>();
+
+        mFuelSliderText.fontSize = 15;
 
         mParentShip = this.transform.parent.GetComponent<Ship>();
 
@@ -71,14 +78,16 @@ public class StatsSliders : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        if (needsRefresh)
-        {
+        // commented out.. addressing symptom of disappearing status bars. 
+        //if (needsRefresh)
+        //{
             UpdateSliders();
-        }
+        //}
 	}
 
     public void Initialize(int inCrew, int inSupplies, int inFuel)
     {
+        
         SetCrew(inCrew);
         SetSupplies(inSupplies);
         SetFuel(inFuel);
@@ -86,18 +95,21 @@ public class StatsSliders : MonoBehaviour {
 
     public void SetCrew(int inCrew)
     {
+        mCrew = inCrew;
         mCrewSlider.value = inCrew;
         mCrewSliderText.text = inCrew.ToString();
     }
 
     public void SetSupplies(int inSupplies)
     {
+        mSupplies = inSupplies;
         mSuppliesSlider.value = inSupplies;
         mSuppliesSliderText.text = inSupplies.ToString();
     }
 
     public void SetFuel(int inFuel)
     {
+        mFuel = inFuel;
         mFuelSlider.value = inFuel;
         mFuelSliderText.text = inFuel.ToString();
     }
@@ -108,6 +120,8 @@ public class StatsSliders : MonoBehaviour {
         mCrewSlider.gameObject.SetActive(!mCrewSlider.gameObject.activeInHierarchy);
         mSuppliesSlider.gameObject.SetActive(!mSuppliesSlider.gameObject.activeInHierarchy);
         mFuelSlider.gameObject.SetActive(!mFuelSlider.gameObject.activeInHierarchy);
+        // Hacky game jam code!
+        this.Initialize(mCrew, mSupplies, mFuel);
     }
 
     // Show the buttons
@@ -116,6 +130,9 @@ public class StatsSliders : MonoBehaviour {
         mCrewSlider.gameObject.SetActive(true);
         mSuppliesSlider.gameObject.SetActive(true);
         mFuelSlider.gameObject.SetActive(true);
+
+        // Hacky game jam code!
+        this.Initialize(mCrew, mSupplies, mFuel);
     }
 
     // Hide the buttons
