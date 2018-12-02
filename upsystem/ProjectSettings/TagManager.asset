@@ -43,3 +43,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 479097133
+    locked: 0
+  - name: Planet
+    uniqueID: 3914783191
+    locked: 0
+  - name: Bear
+    uniqueID: 4014066471
+    locked: 0
+  - name: Ships
+    uniqueID: 2569212139
+    locked: 0
+  - name: GUI
+    uniqueID: 2617780443
+    locked: 0

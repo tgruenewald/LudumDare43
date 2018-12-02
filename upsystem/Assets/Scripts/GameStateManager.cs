@@ -6,8 +6,9 @@ public class GameStateManager : MonoBehaviour
 {
     Ship transferShip1;
     Ship transferShip2;
-    public Button jumpButton;
-    public Button endRoundButton;
+    Button jumpButton;
+    Button endRoundButton;
+    GameObject bearFleet;
     public enum GameState { sacrifice, transfer, defaultState };
     public static GameStateManager Instance;
 
@@ -101,6 +102,7 @@ public class GameStateManager : MonoBehaviour
 
     public void EndTurn()
     {
+        bearFleet.SetActive(false);
         gameState = GameState.defaultState;
         turnNumber++;
         jumpButton.interactable = true;
@@ -157,6 +159,7 @@ public class GameStateManager : MonoBehaviour
         gameState = GameState.sacrifice;
         endRoundButton.interactable = false;
         bearsArrived = true;
+        bearFleet.SetActive(true);
         Debug.Log("Bears Arrived =-0");
     }
 
@@ -171,6 +174,10 @@ public class GameStateManager : MonoBehaviour
 
         GameObject endRound = GameObject.Find("EndTurn");
         endRoundButton = endRound.GetComponent(typeof(Button)) as Button;
+
+        bearFleet = GameObject.Find("BearFleet");
+        bearFleet.SetActive(false);
+
         gameState = GameState.defaultState;
         ResetTurns();
         ResetJumps();
