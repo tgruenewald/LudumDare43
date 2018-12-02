@@ -84,6 +84,8 @@ public class ActionSelector : MonoBehaviour {
 
     public void XferClicked()
     {
+        GameObject dialogCam = GameObject.Find("DialogCamera");
+        dialogCam.GetComponent<Camera>().enabled = true;
         Debug.Log("Xfer clicked.");
     }
 
