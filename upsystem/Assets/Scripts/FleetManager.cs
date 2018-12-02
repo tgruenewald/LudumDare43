@@ -21,7 +21,7 @@ public class FleetManager : MonoBehaviour {
 
     GameObject ShipsScoutingCount = null;
 
-    class ScoutingFinds
+    public class ScoutingFinds
     {
         public Ship ship;
         public int fuelFound;
@@ -177,19 +177,7 @@ public class FleetManager : MonoBehaviour {
         ship.doneScouting = true;
         updateShipsScoutingCount();
 
-        // show dialog
-        // ship.supplyFound
-        string whatFound = "nothing";
-        if (ship.supplyFound > 0) {
-            whatFound = "" + ship.supplyFound + " supplies";
-        }
-        else if (ship.fuelFound > 0) {
-            whatFound = "" + ship.fuelFound + " fuel pods";
-        }
-        else if (ship.shipsFound > 0) {
-            whatFound = "" + ship.shipsFound + " ships";
-        }
-        GameStateManager.DisplayMessage("Scouting mission returned with " + whatFound);
+        DialogManager.ScoutingReturnedMessage(ship);
     }
 
 
