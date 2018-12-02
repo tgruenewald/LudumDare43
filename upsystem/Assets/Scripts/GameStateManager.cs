@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class GameStateManager : MonoBehaviour
 {
     Ship transferShip1;
     Ship transferShip2;
-
-
+    public Button jumpButton;
+    public Button endRoundButton;
     public enum GameState { sacrifice, transfer, defaultState };
     public static GameStateManager Instance;
 
@@ -31,7 +31,6 @@ public class GameStateManager : MonoBehaviour
     }
 
     private GameState gameState;
-    bool canJump = true;
     int jumpNumber = 0;
     int turnNumber = 0;
     int turnOfBearArrival = 4;
@@ -51,8 +50,9 @@ public class GameStateManager : MonoBehaviour
 
     public void ShipActionHandler(FleetManager.ShipActions action, Ship ship)
     {
-        canJump = false; // As soon as a ship takes an action we can not jump
-        if(action == FleetManager.ShipActions.transfer)
+        jumpButton.interactable = false;
+        // Also grey out jump button
+        if (action == FleetManager.ShipActions.transfer)
         {
             // two ships are transfering
             if(gameState == GameState.transfer)
@@ -89,6 +89,7 @@ public class GameStateManager : MonoBehaviour
         }
         else if (action == FleetManager.ShipActions.sacrifice)
         {
+            endRoundButton.interactable = true;
             gameState = GameState.defaultState;
         }
     }
@@ -102,13 +103,13 @@ public class GameStateManager : MonoBehaviour
     {
         gameState = GameState.defaultState;
         turnNumber++;
-        canJump = true;
+        jumpButton.interactable = true;
+        fleetManager.RemoveDestroyedShips();
         if (TurnEnded != null)
         {
             TurnEnded();
         }
         fleetManager.UpdateScoutingShips();
-        fleetManager.RemoveDestroyedShips();
         if (turnNumber >= turnOfBearArrival)
         {
             BearsArrive();
@@ -117,8 +118,6 @@ public class GameStateManager : MonoBehaviour
 
     public void Jump()
     {
-        if (!canJump)
-            Debug.LogError("Shouldnt be able to jump");
         jumpNumber++;
         if (jumpNumber == numberOfJumpsToWin)
         {
@@ -128,6 +127,7 @@ public class GameStateManager : MonoBehaviour
         {
             Jumped();
         }
+        fleetManager.ClearScoutingShips();
         fleetManager.RemoveDestroyedShips();
         ResetTurns();
     }
@@ -135,7 +135,8 @@ public class GameStateManager : MonoBehaviour
     void ResetTurns()
     {
         bearsArrived = false;
-        canJump = true;
+        jumpButton.interactable = true;
+        endRoundButton.interactable = true;
         turnNumber = 0;
         turnOfBearArrival = Random.Range(minTurnsForBearAttack, maxTurnsForBearAttack);
     }
@@ -154,6 +155,7 @@ public class GameStateManager : MonoBehaviour
     void BearsArrive()
     {
         gameState = GameState.sacrifice;
+        endRoundButton.interactable = false;
         bearsArrived = true;
         Debug.Log("Bears Arrived =-0");
     }
@@ -164,6 +166,11 @@ public class GameStateManager : MonoBehaviour
     }
     void Start () 
     {
+        GameObject jump = GameObject.Find("Jump");
+        jumpButton = jump.GetComponent(typeof(Button)) as Button;
+
+        GameObject endRound = GameObject.Find("EndTurn");
+        endRoundButton = endRound.GetComponent(typeof(Button)) as Button;
         gameState = GameState.defaultState;
         ResetTurns();
         ResetJumps();
