@@ -8,6 +8,10 @@ public class ActionButton : MonoBehaviour {
     
     public void ShipAction()
     {
+        if(!ship)
+        {
+            ship = this.transform.parent.parent.parent.gameObject.GetComponent<Ship>();
+        }
         GameStateManager.Instance.fleetManager.ShipAction(action, ship);
     }
 }

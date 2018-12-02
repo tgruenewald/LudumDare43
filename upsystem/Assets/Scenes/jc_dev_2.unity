@@ -2208,6 +2208,7 @@ MonoBehaviour:
   startingSupplyMax: 4
   startingCrewMin: 1
   startingCrewMax: 4
+  fleet: []
   canidateSpotObject: {fileID: 572953004}
   shipsWeCanSpawn:
   - {fileID: 1529988915619332, guid: 08e8618dae6f94e83849b5e0c6379a1d, type: 2}
@@ -2235,6 +2236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775c5d85f3a554247882f8496085e2c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defeatScreen: {fileID: 0}
+  victoryScreen: {fileID: 0}
   minTurnsForBearAttack: 2
   maxTurnsForBearAttack: 6
   minJumpsToWin: 3
