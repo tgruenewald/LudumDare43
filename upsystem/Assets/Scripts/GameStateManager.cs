@@ -37,27 +37,11 @@ public class GameStateManager : MonoBehaviour
     int turnOfBearArrival = 4;
     int numberOfJumpsToWin = 4;
 
-    static GameObject transferDialog;
-
     public void IncreaseBearAttack()
     {
         turnOfBearArrival--;
     }
 
-    public static void CloseTransferDialog() {
-        Destroy(transferDialog);
-    }
-
-    public static void DisplayMessage(string msg) {
-        GameObject dialog = (GameObject) Instantiate(Resources.Load("prefab/StatusDialog"),new Vector3(0, 0, 0), Quaternion.identity); //GameObject.Find("TransferDialog");
-        dialog.transform.SetParent(GameObject.Find("DialogCanvas").transform);
-        dialog.transform.localPosition =  new Vector3(0f, 0f, 0f);
-        dialog.transform.localScale = new Vector3(1f, 1f, 1f);
-
-        // dialog.GetComponent<DialogTrigger>()
-
-        dialog.GetComponentInChildren<Text>().text = msg;
-    }
 
 
     public void ShipActionHandler(FleetManager.ShipActions action, Ship ship)
@@ -75,23 +59,8 @@ public class GameStateManager : MonoBehaviour
                 Debug.Log(GameStateManager.Instance);
 
                 Debug.Log("The real transfer");
-
-
-
-                transferDialog = (GameObject) Instantiate(Resources.Load("prefab/TransferDialog"),new Vector3(0, 0, 0), Quaternion.identity); //GameObject.Find("TransferDialog");
-                transferDialog.transform.SetParent(GameObject.Find("DialogCanvas").transform);
-                transferDialog.transform.localPosition =  new Vector3(0f, 0f, 0f);
-                transferDialog.transform.localScale = new Vector3(1f, 1f, 1f);
-                
-
-                // yeah, yeah, it is kinda backwards.  Ship2 is the first ship
-                transferDialog.GetComponent<TransferDialog>().setShip1(transferShip2);
-
-                // annd.. ship 1 is the 2nd ship selected.
-                transferDialog.GetComponent<TransferDialog>().setShip2(transferShip1);
-                
-                // GameObject dialogCam = GameObject.Find("DialogCamera");
-                // dialogCam.GetComponent<Camera>().enabled = true;                
+                DialogManager.TransferDialog(transferShip2, transferShip1);
+               
             }
             else
             {
@@ -103,7 +72,7 @@ public class GameStateManager : MonoBehaviour
         {
             endRoundButton.interactable = true;
             gameState = GameState.defaultState;
-            DisplayMessage("A ship distracted the Bearlons. You get another chance.");
+            DialogManager.DisplayMessage("A ship distracted the Bearlons. You get another chance.");
         }
     }
 
@@ -142,10 +111,10 @@ public class GameStateManager : MonoBehaviour
             Jumped();
         }
         if (fleetManager.getScoutingShipCount() > 0) {
-            GameStateManager.DisplayMessage("You jumped, but you abandoned " + fleetManager.getScoutingShipCount() + " scouting ships.");
+            DialogManager.DisplayMessage("You jumped, but you abandoned " + fleetManager.getScoutingShipCount() + " scouting ships.");
         }
         else {
-            GameStateManager.DisplayMessage("You jumped to another system.  You are safe...for now." );
+            DialogManager.DisplayMessage("You jumped to another system.  You are safe...for now." );
         }
         
         fleetManager.ClearScoutingShips();
@@ -182,7 +151,7 @@ public class GameStateManager : MonoBehaviour
         bearsArrived = true;
         bearFleet.SetActive(true);
         Debug.Log("Bears Arrived =-0");
-        DisplayMessage("Bearlons have arrived.  You may sacrifice a ship to distract them for one more turn or instead just jump now.");
+        DialogManager.DisplayMessage("Bearlons have arrived.  You may sacrifice a ship to distract them for one more turn or instead just jump now.");
     }
 
     void Awake()
