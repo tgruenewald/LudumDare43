@@ -152,16 +152,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114513721064142076, guid: ed4c2f617486050419d8f7fc5c65c5b3,
-        type: 2}
-      propertyPath: planet
-      value: 
-      objectReference: {fileID: 1988394552}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed4c2f617486050419d8f7fc5c65c5b3, type: 2}
   m_IsPrefabAsset: 0
---- !u!4 &1988394552 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4258957187666592, guid: ed4c2f617486050419d8f7fc5c65c5b3,
-    type: 2}
-  m_PrefabInternal: {fileID: 84832796}

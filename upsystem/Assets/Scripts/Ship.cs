@@ -84,6 +84,7 @@ public class Ship : MonoBehaviour
             }
             else if (GameStateManager.Instance.GetState() == GameStateManager.GameState.transfer)
             {
+
                 GameStateManager.Instance.fleetManager.ShipAction(FleetManager.ShipActions.transfer, this);
             }
         }
@@ -150,11 +151,16 @@ public class Ship : MonoBehaviour
                 _supply = 0;
             }
             //Check survival
-            if (_crew < 1) _state = ShipState.Destroyed;
+            if (_crew < 1) 
+            {
+                _state = ShipState.Destroyed;
+                DialogManager.DisplayMessage("A ships crew starved and didn't make the jump");
+            } 
         }
         else
         {
             _state = ShipState.Destroyed;
+            DialogManager.DisplayMessage("A ship ran out of fuel and couldn't make the jump.");
         }
         //Check if the ship takes damage
         if(_state != ShipState.Destroyed)
