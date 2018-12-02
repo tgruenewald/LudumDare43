@@ -143,8 +143,7 @@ public class FleetManager : MonoBehaviour {
         shipObject.transform.parent = canvas.transform;
         shipObject.transform.position = position;
         Ship ship = shipObject.GetComponent(typeof(Ship)) as Ship;
-        fleet.Add(ship);
-
+        AddShipToFleet(ship);
         // Set starting values
         int fuel = Random.Range(startingFuelMin, startingFuelMax);
         int supply = Random.Range(startingFuelMin, startingFuelMax);
