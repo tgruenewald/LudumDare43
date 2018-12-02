@@ -1017,6 +1017,7 @@ GameObject:
   - component: {fileID: 4460156341785638}
   - component: {fileID: 20238893554880510}
   - component: {fileID: 81111068197034012}
+  - component: {fileID: 114474181035845466}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1178,7 +1179,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4045793511458394}
   - component: {fileID: 20389609005488166}
-  - component: {fileID: 81833275927628956}
   m_Layer: 0
   m_Name: DialogCamera
   m_TagString: Untagged
@@ -1281,6 +1281,7 @@ GameObject:
   - component: {fileID: 222741993090976138}
   - component: {fileID: 114650053321804974}
   - component: {fileID: 114985217396816534}
+  - component: {fileID: 82119488948429184}
   m_Layer: 5
   m_Name: Jump
   m_TagString: Untagged
@@ -2422,13 +2423,101 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1590624061507790}
   m_Enabled: 1
---- !u!81 &81833275927628956
-AudioListener:
+--- !u!82 &82119488948429184
+AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1631821916310572}
+  m_GameObject: {fileID: 1703151309145884}
   m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3389f2ec691c003478e33894313a0ad2, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114007443324753902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4106,6 +4195,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02650236dec8419cbca1aae73f2c574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114474181035845466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1590624061507790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2668c7d0e70c8b4ea05a29c72881e6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displaceAmount: 0
+  displaceTex: {fileID: 2800000, guid: fd52f82b9dd1b3c45a670640e42ec157, type: 3}
 --- !u!114 &114483735920888850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4249,9 +4351,8 @@ MonoBehaviour:
   boundY: 3.2
   planet: {fileID: 4258957187666592}
   planetSprites:
-  - {fileID: 21300000, guid: 5a7ef8d1fe8669b48a48240f1912fdce, type: 3}
-  - {fileID: 21300000, guid: a569bbe4e36a87f429594f8b1dc624cb, type: 3}
   - {fileID: 21300000, guid: 1149d39d2aa70df47ac73ee4b852cba3, type: 3}
+  - {fileID: 21300000, guid: a569bbe4e36a87f429594f8b1dc624cb, type: 3}
 --- !u!114 &114525425814779456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5734,8 +5835,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114874095985390104}
-        m_MethodName: Jump
+      - m_Target: {fileID: 82119488948429184}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114474181035845466}
+        m_MethodName: JumpHandler
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5762,7 +5874,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a343e50ccd1868c4c89238b09f8fa997, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5808,7 +5920,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a343e50ccd1868c4c89238b09f8fa997, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6084,7 +6196,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a343e50ccd1868c4c89238b09f8fa997, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6222,7 +6334,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a343e50ccd1868c4c89238b09f8fa997, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
