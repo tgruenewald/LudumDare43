@@ -41,6 +41,11 @@ public class FleetManager : MonoBehaviour {
     public void ClearScoutingShips()
     {
         scoutingShips.Clear();
+        updateShipsScoutingCount();
+    }
+
+    public int getScoutingShipCount() {
+        return scoutingShips.Count;
     }
     public void ShipAction(ShipActions action, Ship ship)
     {
@@ -65,32 +70,19 @@ public class FleetManager : MonoBehaviour {
             ship.gameObject.SetActive(false);
             scoutingFind.doneScouting = false;
             scoutingShips.Add(scoutingFind);
+            updateShipsScoutingCount();
             fleet.Remove(ship);
         }
     }
 
-    public void incrementShipsScouting() {
+    public void updateShipsScoutingCount() {
         if (ShipsScoutingCount == null) {
             ShipsScoutingCount = GameObject.Find("ShipsScoutingCount");
         }
-        
-        int count = int.Parse(ShipsScoutingCount.GetComponent<Text>().text);
-        count++;
-        ShipsScoutingCount.GetComponent<Text>().text = "" + count;
-    }
 
-    public void decrementShipsScouting() {
-        if (ShipsScoutingCount == null) {
-            ShipsScoutingCount = GameObject.Find("ShipsScoutingCount");
-        }
-        
-        int count = int.Parse(ShipsScoutingCount.GetComponent<Text>().text);
-        count--;
-        if (count < 0) {
-            count = 0;
-        }
-        ShipsScoutingCount.GetComponent<Text>().text = "" + count;
-    }    
+        ShipsScoutingCount.GetComponent<Text>().text = "" + scoutingShips.Count;
+    }
+    
     public void AddShipToFleet(Ship ship)
     {
         fleet.Add(ship);
@@ -120,6 +112,7 @@ public class FleetManager : MonoBehaviour {
        
         }
         scoutingShips = scoutingShips2;
+        updateShipsScoutingCount();
     }
 
     public void RemoveDestroyedShips()
@@ -138,6 +131,7 @@ public class FleetManager : MonoBehaviour {
             }
         }
         fleet = fleet2;
+        updateShipsScoutingCount();
     }
 
     void CreateShip()
@@ -182,7 +176,24 @@ public class FleetManager : MonoBehaviour {
 
         fleet.Add(ship.ship);
         ship.doneScouting = true;
+        updateShipsScoutingCount();
+
+        // show dialog
+        // ship.supplyFound
+        string whatFound = "nothing";
+        if (ship.supplyFound > 0) {
+            whatFound = "" + ship.supplyFound + " supplies";
+        }
+        else if (ship.fuelFound > 0) {
+            whatFound = "" + ship.fuelFound + " fuel pods";
+        }
+        else if (ship.shipsFound > 0) {
+            whatFound = "" + ship.shipsFound + " ships";
+        }
+        GameStateManager.DisplayMessage("Scouting mission returned with " + whatFound);
     }
+
+
 
     void Scout(ScoutingFinds scoutingFind)
     {
