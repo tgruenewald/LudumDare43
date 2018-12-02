@@ -186,14 +186,14 @@ public class FleetManager : MonoBehaviour {
     {
         Ship ship = scoutingFind.ship;
         // fuel ship
-        if (ship.Type == ShipType.Fuel)
+    //    if (ship.Type == ShipType.Fuel)
         {
             int foundStuff = Random.Range(0, 100);
-            if(foundStuff < 30)
+            if(foundStuff < 40)
             {
                 Debug.Log("Found fuel");
                 int fuelFound = Random.Range(minFuelFound, maxFuelFound);
-                ship.AddResource(Resource.Fuel, fuelFound);
+                ship.AddResource(Resource.Fuel, ref fuelFound);
                 scoutingFind.fuelFound += fuelFound;
                 if (ship.Fuel == ship.MaxFuel)
                 {
@@ -202,15 +202,15 @@ public class FleetManager : MonoBehaviour {
                 }
             }
         }
-        else if(ship.Type == ShipType.Supply) // Supply ship
+      //  else if(ship.Type == ShipType.Supply) // Supply ship
         {
             int foundStuff = Random.Range(0, 100);
-            if (foundStuff < 30)
+            if (foundStuff < 40)
             {
                 Debug.Log("Found supply");
 
                 int supplyFound = Random.Range(minSupplyFound, maxSupplyFound);
-                ship.AddResource(Resource.Supply, supplyFound);
+                ship.AddResource(Resource.Supply, ref supplyFound);
                 scoutingFind.supplyFound += supplyFound;
 
                 if (ship.Supply == ship.MaxSupply)
