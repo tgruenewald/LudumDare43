@@ -32,7 +32,7 @@ public class Ship : MonoBehaviour
     public int Crew { get { return _crew; } }
     public int Supply { get { return _supply; } }
     public int Fuel { get { return _fuel; } }
-
+    public ShipType Type {  get { return _type; } }
     private ActionSelector mActionSelector;
     private StatsSliders mStatsSliders;
 
