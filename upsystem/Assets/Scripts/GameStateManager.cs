@@ -64,6 +64,8 @@ public class GameStateManager : MonoBehaviour
             }
             else
             {
+                // Transfer is called first time
+                DialogManager.DisplayMessage("Choose another to transfer to");
                 transferShip2 = ship;
                 gameState = GameState.transfer;
             }
@@ -73,6 +75,8 @@ public class GameStateManager : MonoBehaviour
             endRoundButton.interactable = true;
             gameState = GameState.defaultState;
             DialogManager.DisplayMessage("A ship distracted the Bearlons. You get another chance.");
+
+            // TODO: do some animation.
         }
     }
 

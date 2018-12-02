@@ -10,7 +10,7 @@ public class DialogManager: MonoBehaviour
     public static void TransferDialog(Ship transferShip1, Ship transferShip2 ) 
     {
 
-        GameObject transferDialog = (GameObject) Instantiate(Resources.Load("prefab/TransferDialog"),new Vector3(0, 0, 0), Quaternion.identity); //GameObject.Find("TransferDialog");
+        transferDialog = (GameObject) Instantiate(Resources.Load("prefab/TransferDialog"),new Vector3(0, 0, 0), Quaternion.identity); //GameObject.Find("TransferDialog");
         transferDialog.transform.SetParent(GameObject.Find("DialogCanvas").transform);
         transferDialog.transform.localPosition =  new Vector3(0f, 0f, 0f);
         transferDialog.transform.localScale = new Vector3(1f, 1f, 1f);
@@ -21,9 +21,11 @@ public class DialogManager: MonoBehaviour
 
         // annd.. ship 1 is the 2nd ship selected.
         transferDialog.GetComponent<TransferDialog>().setShip2(transferShip1);        
+        
     }
     public static void CloseTransferDialog() 
     {
+        Debug.Log("transfer dialog close");
         Destroy(transferDialog);
     }  
 

@@ -84,6 +84,7 @@ public class Ship : MonoBehaviour
             }
             else if (GameStateManager.Instance.GetState() == GameStateManager.GameState.transfer)
             {
+
                 GameStateManager.Instance.fleetManager.ShipAction(FleetManager.ShipActions.transfer, this);
             }
         }
