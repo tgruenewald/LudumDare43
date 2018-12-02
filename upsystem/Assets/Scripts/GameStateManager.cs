@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GameStateManager : MonoBehaviour
 {
+    public GameObject defeatScreen;
+    public GameObject victoryScreen;
     Ship transferShip1;
     Ship transferShip2;
     Button jumpButton;
     Button endRoundButton;
     GameObject bearFleet;
-    public enum GameState { sacrifice, transfer, defaultState };
+    public enum GameState { sacrifice, transfer, defaultState, gameOver };
     public static GameStateManager Instance;
 
     public delegate void TurnEndEventHandler();
@@ -110,13 +112,20 @@ public class GameStateManager : MonoBehaviour
         jumpNumber++;
         gameState = GameState.defaultState;
 
-        if (jumpNumber == numberOfJumpsToWin)
-        {
-            Victory();
-        }
         if (Jumped != null)
         {
             Jumped();
+        }
+        fleetManager.RemoveDestroyedShips();
+        if(fleetManager.fleet.Count == 0)
+        {
+            Defeat();
+            return;
+        }
+        if (jumpNumber == numberOfJumpsToWin)
+        {
+            Victory();
+            return;
         }
         if (fleetManager.getScoutingShipCount() > 0) {
             DialogManager.DisplayMessage("You jumped, but you abandoned " + fleetManager.getScoutingShipCount() + " scouting ships.");
@@ -126,7 +135,7 @@ public class GameStateManager : MonoBehaviour
         }
         
         fleetManager.ClearScoutingShips();
-        fleetManager.RemoveDestroyedShips();
+
         ResetTurns();
     }
 
@@ -148,7 +157,18 @@ public class GameStateManager : MonoBehaviour
 
     void Victory()
     {
-        // TODO
+        GameObject camera = GameObject.Find("Main Camera");
+        camera.SetActive(false);
+        victoryScreen.SetActive(true);
+        gameState = GameState.gameOver;
+    }
+
+    void Defeat()
+    {
+        GameObject camera = GameObject.Find("Main Camera");
+        camera.SetActive(false);
+        defeatScreen.SetActive(true);
+        gameState = GameState.gameOver;
     }
 
     void BearsArrive()
