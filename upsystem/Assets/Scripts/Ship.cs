@@ -76,6 +76,11 @@ public class Ship : MonoBehaviour
             {
                 mActionSelector.Toggle();
             }
+            else if (GameStateManager.Instance.GetState() == GameStateManager.GameState.sacrifice)
+            {
+                GameStateManager.Instance.fleetManager.ShipAction(FleetManager.ShipActions.sacrifice, this);
+                EndShipTurn();
+            }
             else if (GameStateManager.Instance.GetState() == GameStateManager.GameState.transfer)
             {
                 GameStateManager.Instance.fleetManager.ShipAction(FleetManager.ShipActions.transfer, this);
