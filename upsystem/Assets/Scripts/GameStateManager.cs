@@ -18,8 +18,8 @@ public class GameStateManager : MonoBehaviour
     public delegate void JumpEventHandler();
     public event JumpEventHandler Jumped;
 
-    public int minTurnsForBearAttack = 2;
-    public int maxTurnsForBearAttack = 6;
+    public int minTurnsForBearAttack = 4;
+    public int maxTurnsForBearAttack = 8;
 
     public int minJumpsToWin = 3;
     public int maxJumpsToWin = 6;
