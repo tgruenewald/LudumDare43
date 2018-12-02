@@ -125,6 +125,10 @@ public class GameStateManager : MonoBehaviour
         Debug.Log("Bears Arrived =-0");
     }
 
+    void Awake()
+    {
+        Instance = this;
+    }
     void Start () 
     {
         ResetTurns();
