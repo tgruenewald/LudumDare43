@@ -63,7 +63,14 @@ public class Ship : MonoBehaviour
 
     void OnMouseUp()
     {
-        mActionSelector.Toggle();
+        if(GameStateManager.Instance.GetState() == GameStateManager.GameState.defaultState)
+        {
+            mActionSelector.Toggle();
+        }
+        else if(GameStateManager.Instance.GetState() == GameStateManager.GameState.transfer)
+        {
+            GameStateManager.Instance.fleetManager.ShipAction(FleetManager.ShipActions.transfer, this);
+        }
     }
 
     private void OnMouseEnter()
