@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 222453205603378414}
   - component: {fileID: 114851351734324944}
   - component: {fileID: 114604584873178286}
+  - component: {fileID: 114936879829927692}
   m_Layer: 5
   m_Name: Scout
   m_TagString: Untagged
@@ -176,6 +177,7 @@ GameObject:
   - component: {fileID: 222201976697798576}
   - component: {fileID: 114583165982566138}
   - component: {fileID: 114210209022328746}
+  - component: {fileID: 114766752211065828}
   m_Layer: 5
   m_Name: Repair
   m_TagString: Untagged
@@ -273,6 +275,7 @@ GameObject:
   - component: {fileID: 222531863140239900}
   - component: {fileID: 114352370126929578}
   - component: {fileID: 114043334300001572}
+  - component: {fileID: 114290507856735070}
   m_Layer: 5
   m_Name: Xfer
   m_TagString: Untagged
@@ -439,7 +442,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114352370126929578}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114290507856735070}
+        m_MethodName: ShipAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114059534725791674
@@ -701,7 +715,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114583165982566138}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114766752211065828}
+        m_MethodName: ShipAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114242386046514288
@@ -764,6 +789,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114290507856735070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1790744154100956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4d31c953413c9498db87ab4244f11e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 114131636021016784}
+  action: 1
 --- !u!114 &114317354680036864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -971,7 +1009,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114851351734324944}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114936879829927692}
+        m_MethodName: ShipAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114688544700912018
@@ -1007,6 +1056,19 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 0
+--- !u!114 &114766752211065828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1512851289700306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4d31c953413c9498db87ab4244f11e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 114131636021016784}
+  action: 3
 --- !u!114 &114851351734324944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1067,6 +1129,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: S
+--- !u!114 &114936879829927692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247724441410272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4d31c953413c9498db87ab4244f11e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 114131636021016784}
+  action: 2
 --- !u!212 &212084319606586796
 SpriteRenderer:
   m_ObjectHideFlags: 1

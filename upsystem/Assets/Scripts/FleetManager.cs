@@ -8,12 +8,13 @@ public class FleetManager : MonoBehaviour {
     List<Ship> fleet = new List<Ship>();
     List<ScoutingFinds> scoutingShips = new List<ScoutingFinds>();
 
-    struct ScoutingFinds
+    class ScoutingFinds
     {
         public Ship ship;
         public int fuelFound;
         public int supplyFound;
         public int shipsFound;
+        public bool doneScouting;
     }
 
     public List<Ship> startingShips = new List<Ship>();
@@ -48,6 +49,8 @@ public class FleetManager : MonoBehaviour {
             scoutingFind.shipsFound = 0;
             scoutingFind.supplyFound = 0;
             scoutingFind.ship = ship;
+            ship.gameObject.SetActive(false);
+            scoutingFind.doneScouting = false;
             scoutingShips.Add(scoutingFind);
             fleet.Remove(ship);
         }
@@ -72,6 +75,14 @@ public class FleetManager : MonoBehaviour {
         {
             Scout(scoutingFind);
         }
+        List<ScoutingFinds> scoutingShips2 = new List<ScoutingFinds>();
+        foreach (ScoutingFinds scoutingFind in scoutingShips)
+        {
+            if (!scoutingFind.doneScouting)
+                scoutingShips2.Add(scoutingFind);
+       
+        }
+        scoutingShips = scoutingShips2;
     }
 
     void ReturnShip(ScoutingFinds ship)
@@ -80,8 +91,10 @@ public class FleetManager : MonoBehaviour {
         {
             // add ships;
         }
+        ship.ship.gameObject.SetActive(true);
+
         fleet.Add(ship.ship);
-        scoutingShips.Remove(ship);
+        ship.doneScouting = true;
     }
 
     void Scout(ScoutingFinds scoutingFind)
@@ -93,6 +106,7 @@ public class FleetManager : MonoBehaviour {
             int foundStuff = Random.Range(0, 100);
             if(foundStuff < 30)
             {
+                Debug.Log("Found fuel");
                 int fuelFound = Random.Range(minFuelFound, maxFuelFound);
                 ship.AddResource(Resource.Fuel, fuelFound);
                 scoutingFind.fuelFound += fuelFound;
@@ -108,6 +122,8 @@ public class FleetManager : MonoBehaviour {
             int foundStuff = Random.Range(0, 100);
             if (foundStuff < 30)
             {
+                Debug.Log("Found supply");
+
                 int supplyFound = Random.Range(minSupplyFound, maxSupplyFound);
                 ship.AddResource(Resource.Supply, supplyFound);
                 scoutingFind.supplyFound += supplyFound;
@@ -124,6 +140,8 @@ public class FleetManager : MonoBehaviour {
         int whatFind = Random.Range(0, 100);
         if(whatFind < 20)
         {
+            Debug.Log("Found ship");
+
             scoutingFind.shipsFound++;
             if(scoutingFind.shipsFound == 2)
             {
@@ -138,8 +156,12 @@ public class FleetManager : MonoBehaviour {
         {
             // increase bearlon attack
             GameStateManager.Instance.IncreaseBearAttack();
-            Debug.Log("Bears coming sooner");
+            Debug.Log("found bears");
             ReturnShip(scoutingFind);
+        }
+        else
+        {
+            Debug.Log("found nothing");
         }
 
     }

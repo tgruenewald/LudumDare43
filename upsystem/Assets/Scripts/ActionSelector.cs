@@ -55,9 +55,9 @@ public class ActionSelector : MonoBehaviour {
                             .GetComponent<Button>();
 
         //Calls the TaskOnClick/TaskWithParameters/ButtonClicked method when you click the Button
-        mScoutButton.onClick.AddListener(mShip.Scout);
-        mXferButton.onClick.AddListener(XferClicked);
-        mRepairButton.onClick.AddListener(mShip.Repair);
+        //mScoutButton.onClick.AddListener(mShip.Scout);
+        //mXferButton.onClick.AddListener(XferClicked);
+        //mRepairButton.onClick.AddListener(mShip.Repair);
 	}
 
     // Set the buttons to show or not show depending on their current state

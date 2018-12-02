@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 222205588229505106}
   - component: {fileID: 114562290100494036}
   - component: {fileID: 114598145007165240}
+  - component: {fileID: 114580636107705588}
   m_Layer: 5
   m_Name: Scout
   m_TagString: Untagged
@@ -138,6 +139,7 @@ GameObject:
   - component: {fileID: 222458372288178184}
   - component: {fileID: 114868925133459580}
   - component: {fileID: 114492696124483638}
+  - component: {fileID: 114741834626184328}
   m_Layer: 5
   m_Name: Xfer
   m_TagString: Untagged
@@ -237,6 +239,7 @@ GameObject:
   - component: {fileID: 222310507556507920}
   - component: {fileID: 114711092773088558}
   - component: {fileID: 114584673000358146}
+  - component: {fileID: 114122767379180658}
   m_Layer: 5
   m_Name: Repair
   m_TagString: Untagged
@@ -428,6 +431,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114122767379180658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1500617117480638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4d31c953413c9498db87ab4244f11e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 114265869336902380}
+  action: 3
 --- !u!114 &114265869336902380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -543,7 +559,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114868925133459580}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114741834626184328}
+        m_MethodName: ShipAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114499170702831468
@@ -584,6 +611,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114580636107705588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1175293948502782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4d31c953413c9498db87ab4244f11e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 114265869336902380}
+  action: 2
 --- !u!114 &114584673000358146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -622,7 +662,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114711092773088558}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114122767379180658}
+        m_MethodName: ShipAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114593501527841160
@@ -711,7 +762,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114562290100494036}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114580636107705588}
+        m_MethodName: ShipAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114683534467975778
@@ -774,6 +836,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114741834626184328
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1280215104233660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4d31c953413c9498db87ab4244f11e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 114265869336902380}
+  action: 1
 --- !u!114 &114775391544522178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1611,6 +1686,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: 2.5}
+  m_AnchoredPosition: {x: -5.6522474, y: 0.3856825}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
