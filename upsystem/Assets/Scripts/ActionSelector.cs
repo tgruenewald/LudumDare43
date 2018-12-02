@@ -56,7 +56,7 @@ public class ActionSelector : MonoBehaviour {
 
         //Calls the TaskOnClick/TaskWithParameters/ButtonClicked method when you click the Button
         //mScoutButton.onClick.AddListener(mShip.Scout);
-        //mXferButton.onClick.AddListener(XferClicked);
+        mXferButton.onClick.AddListener(XferClicked);
         //mRepairButton.onClick.AddListener(mShip.Repair);
 	}
 
@@ -84,15 +84,22 @@ public class ActionSelector : MonoBehaviour {
 
     public void XferClicked()
     {
-        Debug.Log(GameStateManager.Instance);
-        GameStateManager.Instance.ship1 = GameObject.Find("PassengerShip").GetComponent<PassengerShip>();
-        GameStateManager.Instance.ship2 = GameObject.Find("ScoutShip").GetComponent<ScoutShip>();
+        GameStateManager.Instance.fleetManager.ShipAction(FleetManager.ShipActions.transfer, mShip);
 
-        GameObject transferDialog = GameObject.Find("TransferDialog");
-        transferDialog.GetComponent<TransferDialog>().setCrew1(GameStateManager.Instance.ship1.Crew);
+        // Debug.Log(GameStateManager.Instance);
+        // GameStateManager.Instance.ship1 = GameObject.Find("PassengerShip").GetComponent<PassengerShip>();
+        // GameStateManager.Instance.ship2 = GameObject.Find("ScoutShip").GetComponent<ScoutShip>();
 
-        GameObject dialogCam = GameObject.Find("DialogCamera");
-        dialogCam.GetComponent<Camera>().enabled = true;
+        // GameObject transferDialog = GameObject.Find("TransferDialog");
+        // transferDialog.GetComponent<TransferDialog>().setCrew1(GameStateManager.Instance.ship1.Crew);
+        // transferDialog.GetComponent<TransferDialog>().setSupply1(GameStateManager.Instance.ship1.Supply);
+        // transferDialog.GetComponent<TransferDialog>().setFuel1(GameStateManager.Instance.ship1.Fuel);
+
+        // transferDialog.GetComponent<TransferDialog>().setCrew2(GameStateManager.Instance.ship2.Crew);
+        // transferDialog.GetComponent<TransferDialog>().setSupply2(GameStateManager.Instance.ship2.Supply);
+        // transferDialog.GetComponent<TransferDialog>().setFuel2(GameStateManager.Instance.ship2.Fuel);
+        // GameObject dialogCam = GameObject.Find("DialogCamera");
+        // dialogCam.GetComponent<Camera>().enabled = true;
         Debug.Log("Xfer clicked.");
     }
 

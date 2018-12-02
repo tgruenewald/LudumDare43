@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
-    public Ship transferShip1;
-    public Ship transferShip2;
+    public Ship transferShip1;  // 2nd ship selected
+    public Ship transferShip2; // the 1st ship selected
 
     public enum GameState { sacrifice, transfer, defaultState };
     public static GameStateManager Instance;
@@ -36,10 +36,6 @@ public class GameStateManager : MonoBehaviour
     int turnOfBearArrival = 4;
     int numberOfJumpsToWin = 4;
 
-    // TODO: Remove later
-    public Ship ship1;
-    public Ship ship2;
-
     public void IncreaseBearAttack()
     {
         turnOfBearArrival--;
@@ -53,8 +49,22 @@ public class GameStateManager : MonoBehaviour
             // two ships are transfering
             if(gameState == GameState.transfer)
             {
+                // this is when the final ship gets selected
                 transferShip1 = ship;
                 gameState = GameState.defaultState;
+                Debug.Log(GameStateManager.Instance);
+
+                Debug.Log("The real transfer");
+                GameObject transferDialog = GameObject.Find("TransferDialog");
+
+                // yeah, yeah, it is kinda backwards.  Ship2 is the first ship
+                transferDialog.GetComponent<TransferDialog>().setShip1(transferShip2);
+
+                // annd.. ship 1 is the 2nd ship selected.
+                transferDialog.GetComponent<TransferDialog>().setShip2(transferShip1);
+                
+                GameObject dialogCam = GameObject.Find("DialogCamera");
+                dialogCam.GetComponent<Camera>().enabled = true;                
             }
             else
             {
