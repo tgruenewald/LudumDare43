@@ -134,6 +134,7 @@ public class FleetManager : MonoBehaviour {
             {
                 Debug.Log("Destroy");
                 canidateSpots.Add(ship.transform.position);
+                fleet.Remove(ship);
                 Destroy(ship.gameObject);
             }
         }
