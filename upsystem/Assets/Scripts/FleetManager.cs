@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class FleetManager : MonoBehaviour {
 
@@ -18,6 +18,8 @@ public class FleetManager : MonoBehaviour {
     public GameObject canidateSpotObject;
     List<Vector3> canidateSpots = new List<Vector3>();
     public List<GameObject> shipsWeCanSpawn;
+
+    GameObject ShipsScoutingCount = null;
 
     class ScoutingFinds
     {
@@ -66,6 +68,29 @@ public class FleetManager : MonoBehaviour {
             fleet.Remove(ship);
         }
     }
+
+    public void incrementShipsScouting() {
+        if (ShipsScoutingCount == null) {
+            ShipsScoutingCount = GameObject.Find("ShipsScoutingCount");
+        }
+        
+        int count = int.Parse(ShipsScoutingCount.GetComponent<Text>().text);
+        count++;
+        ShipsScoutingCount.GetComponent<Text>().text = "" + count;
+    }
+
+    public void decrementShipsScouting() {
+        if (ShipsScoutingCount == null) {
+            ShipsScoutingCount = GameObject.Find("ShipsScoutingCount");
+        }
+        
+        int count = int.Parse(ShipsScoutingCount.GetComponent<Text>().text);
+        count--;
+        if (count < 0) {
+            count = 0;
+        }
+        ShipsScoutingCount.GetComponent<Text>().text = "" + count;
+    }    
     public void AddShipToFleet(Ship ship)
     {
         fleet.Add(ship);
