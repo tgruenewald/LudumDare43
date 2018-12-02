@@ -256,6 +256,7 @@ public class Ship : MonoBehaviour
             }
         }
         _state = ShipState.Transfering;
+        mStatsSliders.UpdateSliders();
     }
 
     /// <summary>
