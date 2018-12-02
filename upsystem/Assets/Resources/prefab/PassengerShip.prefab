@@ -418,7 +418,7 @@ MonoBehaviour:
   _supply: 1
   _fuel: 1
   _maxCrew: 8
-  _maxSupply: 2
+  _maxSupply: 16
   _maxFuel: 2
 --- !u!114 &114044395556829078
 MonoBehaviour:

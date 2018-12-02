@@ -3311,10 +3311,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _crew: 1
-  _supply: 1
+  _supply: 2
   _fuel: 3
   _maxCrew: 2
-  _maxSupply: 2
+  _maxSupply: 4
   _maxFuel: 4
 --- !u!114 &114255512551889058
 MonoBehaviour:
@@ -3387,7 +3387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _crew: 3
-  _supply: 2
+  _supply: 6
   _fuel: 7
   _maxCrew: 4
   _maxSupply: 2
@@ -5354,10 +5354,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _crew: 6
-  _supply: 1
+  _supply: 12
   _fuel: 1
   _maxCrew: 8
-  _maxSupply: 2
+  _maxSupply: 16
   _maxFuel: 2
 --- !u!114 &114838722243403534
 MonoBehaviour:
