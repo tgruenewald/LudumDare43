@@ -82,6 +82,17 @@ public class FleetManager : MonoBehaviour {
 
         ShipsScoutingCount.GetComponent<Text>().text = "" + scoutingShips.Count;
     }
+
+    public void CloseActionsExceptFor(Ship ship)
+    {
+        foreach(Ship _ship in fleet)
+        {
+            if(_ship != ship)
+            {
+                _ship.HideActions();
+            }
+        }
+    }
     
     public void AddShipToFleet(Ship ship)
     {

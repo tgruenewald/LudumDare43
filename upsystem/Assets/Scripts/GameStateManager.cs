@@ -53,7 +53,7 @@ public class GameStateManager : MonoBehaviour
         if (action == FleetManager.ShipActions.transfer)
         {
             // two ships are transfering
-            if(gameState == GameState.transfer)
+            if (gameState == GameState.transfer)
             {
                 // this is when the final ship gets selected
                 transferShip1 = ship;
@@ -62,7 +62,7 @@ public class GameStateManager : MonoBehaviour
 
                 Debug.Log("The real transfer");
                 DialogManager.TransferDialog(transferShip2, transferShip1);
-               
+
             }
             else
             {
@@ -81,6 +81,15 @@ public class GameStateManager : MonoBehaviour
 
             // TODO: do some animation.
         }
+        else
+        {
+            fleetManager.CloseActionsExceptFor(ship);
+        }
+    }
+
+    public void CloseActionsExceptFor(Ship ship)
+    {
+        fleetManager.CloseActionsExceptFor(ship);
     }
 
     public GameState GetState()
