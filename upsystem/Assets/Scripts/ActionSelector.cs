@@ -86,7 +86,8 @@ public class ActionSelector : MonoBehaviour {
     {
         GameStateManager.Instance.fleetManager.ShipAction(FleetManager.ShipActions.transfer, mShip);
 
-        Debug.Log("Xfer clicked.");
+        Debug.Log("Xfer clicked.");  
+
     }
 
     public void RepairClicked()
