@@ -123,7 +123,10 @@ public class Ship : MonoBehaviour
     }
 
     //Properties
-    public String Name { get; set; }
+    private String _name = "null";
+    public virtual String Name { get { return _name; } set { this._name += value; } }
+
+
     public String State { get { return _state.ToString(); } }
 
 
