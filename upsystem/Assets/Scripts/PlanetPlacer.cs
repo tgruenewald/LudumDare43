@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlanetPlacer : MonoBehaviour {
-    public float maxX = 1.1F;
-    public float maxY = 1.1F;
+    public float boundX = 13.1f;
+    public float boundY = 5.1F;
     public Transform planet;
     int prvIndex = -1;
     public List<Sprite> planetSprites = new List<Sprite>();
     
     void PlacePlanet()
     {
-        planet.transform.position = new Vector3(Random.Range(0, maxX), Random.Range(0, maxY), 0);
+        planet.transform.localPosition = new Vector3(Random.Range(-boundX, boundX), Random.Range(-boundY, boundY), 0);
         int index = -1;
         bool foundIndex = false;
         while(!foundIndex)
@@ -30,6 +30,7 @@ public class PlanetPlacer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         PlacePlanet();
+        GameStateManager.Instance.Jumped += PlacePlanet;
     }
 	
 	// Update is called once per frame

@@ -102,7 +102,8 @@ public class FleetManager : MonoBehaviour {
     {
         GameStateManager.Instance.Jumped -= ship.Jump;
         GameStateManager.Instance.TurnEnded -= ship.EndTurn;
-        fleet.Remove(ship);
+        canidateSpots.Add(ship.transform.position);
+        Destroy(ship.gameObject);
     }
 
     public void UpdateScoutingShips()
@@ -133,9 +134,7 @@ public class FleetManager : MonoBehaviour {
             else
             {
                 Debug.Log("Destroy");
-                canidateSpots.Add(ship.transform.position);
-                fleet.Remove(ship);
-                Destroy(ship.gameObject);
+                RemoveShipFromFleet(ship);
             }
         }
         fleet = fleet2;
