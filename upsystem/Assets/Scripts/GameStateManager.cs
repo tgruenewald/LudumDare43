@@ -74,6 +74,7 @@ public class GameStateManager : MonoBehaviour
         {
             endRoundButton.interactable = true;
             gameState = GameState.defaultState;
+            DialogManager.SacrificeShipMessage(false);
             DialogManager.DisplayMessage("A ship distracted the Bearlons. You get another chance.");
 
             // TODO: do some animation.
@@ -105,6 +106,7 @@ public class GameStateManager : MonoBehaviour
 
     public void Jump()
     {
+        DialogManager.SacrificeShipMessage(false);
         jumpNumber++;
         if (jumpNumber == numberOfJumpsToWin)
         {
@@ -156,6 +158,7 @@ public class GameStateManager : MonoBehaviour
         bearFleet.SetActive(true);
         Debug.Log("Bears Arrived =-0");
         DialogManager.DisplayMessage("Bearlons have arrived.  You may sacrifice a ship to distract them for one more turn or instead just jump now.");
+        DialogManager.SacrificeShipMessage(true);
     }
 
     void Awake()

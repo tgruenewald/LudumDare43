@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class DialogManager: MonoBehaviour
 {
     static GameObject transferDialog;
+    static GameObject sacrificeShipMsg;
     public static void TransferDialog(Ship transferShip1, Ship transferShip2 ) 
     {
 
@@ -39,6 +40,16 @@ public class DialogManager: MonoBehaviour
 
         dialog.GetComponentInChildren<Text>().text = msg;
     }
+
+    public static void SacrificeShipMessage(bool turnOn) {
+        if (sacrificeShipMsg == null) 
+        {
+            sacrificeShipMsg = GameObject.Find("SacrificeShipMsg");
+        }
+        sacrificeShipMsg.GetComponent<Text>().enabled = turnOn;
+    }
+
+
 
     public static void ScoutingReturnedMessage(FleetManager.ScoutingFinds ship) 
     {
