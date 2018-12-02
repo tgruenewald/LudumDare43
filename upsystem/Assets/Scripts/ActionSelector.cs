@@ -84,6 +84,13 @@ public class ActionSelector : MonoBehaviour {
 
     public void XferClicked()
     {
+        Debug.Log(GameStateManager.Instance);
+        GameStateManager.Instance.ship1 = GameObject.Find("PassengerShip").GetComponent<PassengerShip>();
+        GameStateManager.Instance.ship2 = GameObject.Find("ScoutShip").GetComponent<ScoutShip>();
+
+        GameObject transferDialog = GameObject.Find("TransferDialog");
+        transferDialog.GetComponent<TransferDialog>().setCrew1(GameStateManager.Instance.ship1.Crew);
+
         GameObject dialogCam = GameObject.Find("DialogCamera");
         dialogCam.GetComponent<Camera>().enabled = true;
         Debug.Log("Xfer clicked.");

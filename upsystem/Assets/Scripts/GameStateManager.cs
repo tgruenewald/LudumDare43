@@ -33,6 +33,10 @@ public class GameStateManager : MonoBehaviour
     int turnOfBearArrival = 4;
     int numberOfJumpsToWin = 4;
 
+    // TODO: Remove later
+    public Ship ship1;
+    public Ship ship2;
+
     public void IncreaseBearAttack()
     {
         turnOfBearArrival--;
