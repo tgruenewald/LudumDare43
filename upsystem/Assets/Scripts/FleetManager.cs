@@ -85,6 +85,23 @@ public class FleetManager : MonoBehaviour {
         scoutingShips = scoutingShips2;
     }
 
+    public void RemoveDestroyedShips()
+    {
+        List <Ship> fleet2 = new List<Ship>();
+        foreach (Ship ship in fleet)
+        {
+            if(ship.State != "Destroyed")
+            {
+                fleet2.Add(ship);
+            }
+            else
+            {
+                Debug.Log("Destroy");
+                Destroy(ship.gameObject);
+            }
+        }
+        fleet = fleet2;
+    }
     void ReturnShip(ScoutingFinds ship)
     {
         for(int i = 0; i < ship.shipsFound; i++)

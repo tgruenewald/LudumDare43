@@ -98,6 +98,7 @@ public class GameStateManager : MonoBehaviour
         {
             Jumped();
         }
+        fleetManager.RemoveDestroyedShips();
         ResetTurns();
     }
 
