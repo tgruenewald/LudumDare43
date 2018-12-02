@@ -27,7 +27,7 @@ public class FleetManager : MonoBehaviour {
 
     public void ShipAction(ShipActions action, Ship ship)
     {
-        GameStateManager.Instance.ShipActionHandler(action);
+        GameStateManager.Instance.ShipActionHandler(action, ship);
 
         if (action == ShipActions.sacrifice)
         {

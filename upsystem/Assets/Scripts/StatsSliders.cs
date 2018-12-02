@@ -9,8 +9,24 @@ public class StatsSliders : MonoBehaviour {
     private Text mCrewSliderText, mSuppliesSliderText, mFuelSliderText;
     private Ship mParentShip;
 
+    void Refresh()
+    {
+        needsRefresh = true;
+    }
+
+    private bool needsRefresh = false;
+    void UpdateSliders()
+    {
+        SetCrew(mParentShip.Crew);
+        SetSupplies(mParentShip.Supply);
+        SetFuel(mParentShip.Fuel);
+    }
+
 	// Use this for initialization
 	void Start () {
+
+        GameStateManager.Instance.Jumped += Refresh;
+
         mCrewSlider = this.transform
                           .GetChild(0)
                            .gameObject
@@ -52,8 +68,12 @@ public class StatsSliders : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update () 
+    {
+        if (needsRefresh)
+        {
+            UpdateSliders();
+        }
 	}
 
     public void Initialize(int inCrew, int inSupplies, int inFuel)

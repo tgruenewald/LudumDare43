@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
+    public Ship transferShip1;
+    public Ship transferShip2;
+
     public enum GameState { sacrifice, transfer, defaultState };
     public static GameStateManager Instance;
 
@@ -42,7 +45,7 @@ public class GameStateManager : MonoBehaviour
         turnOfBearArrival--;
     }
 
-    public void ShipActionHandler(FleetManager.ShipActions action)
+    public void ShipActionHandler(FleetManager.ShipActions action, Ship ship)
     {
         canJump = false; // As soon as a ship takes an action we can not jump
         if(action == FleetManager.ShipActions.transfer)
@@ -50,10 +53,12 @@ public class GameStateManager : MonoBehaviour
             // two ships are transfering
             if(gameState == GameState.transfer)
             {
+                transferShip1 = ship;
                 gameState = GameState.defaultState;
             }
             else
             {
+                transferShip2 = ship;
                 gameState = GameState.transfer;
             }
         }
@@ -70,6 +75,7 @@ public class GameStateManager : MonoBehaviour
 
     public void EndTurn()
     {
+        gameState = GameState.defaultState;
         turnNumber++;
         canJump = true;
         if (TurnEnded != null)
@@ -131,6 +137,7 @@ public class GameStateManager : MonoBehaviour
     }
     void Start () 
     {
+        gameState = GameState.defaultState;
         ResetTurns();
         ResetJumps();
     }
