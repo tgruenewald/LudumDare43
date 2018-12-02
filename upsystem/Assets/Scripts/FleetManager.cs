@@ -85,6 +85,14 @@ public class FleetManager : MonoBehaviour {
     
     public void AddShipToFleet(Ship ship)
     {
+        string result = string.Empty;
+        int value = (int)(Random.Range(0.0f, 100.0f));
+        while (--value >= 0)
+        {
+            result = (char)('A' + value % 26) + result;
+            value /= 26;
+        }
+        ship.Name = result + fleet.Count.ToString() + ((int)(Random.Range(0.0f, 100.0f))).ToString();
         fleet.Add(ship);
         GameStateManager.Instance.Jumped += ship.Jump;
         GameStateManager.Instance.TurnEnded += ship.EndTurn;
@@ -185,14 +193,14 @@ public class FleetManager : MonoBehaviour {
     {
         Ship ship = scoutingFind.ship;
         // fuel ship
-        if (ship.Type == ShipType.Fuel)
+    //    if (ship.Type == ShipType.Fuel)
         {
             int foundStuff = Random.Range(0, 100);
-            if(foundStuff < 30)
+            if(foundStuff < 40)
             {
                 Debug.Log("Found fuel");
                 int fuelFound = Random.Range(minFuelFound, maxFuelFound);
-                ship.AddResource(Resource.Fuel, fuelFound);
+                ship.AddResource(Resource.Fuel, ref fuelFound);
                 scoutingFind.fuelFound += fuelFound;
                 if (ship.Fuel == ship.MaxFuel)
                 {
@@ -201,15 +209,15 @@ public class FleetManager : MonoBehaviour {
                 }
             }
         }
-        else if(ship.Type == ShipType.Supply) // Supply ship
+      //  else if(ship.Type == ShipType.Supply) // Supply ship
         {
             int foundStuff = Random.Range(0, 100);
-            if (foundStuff < 30)
+            if (foundStuff < 40)
             {
                 Debug.Log("Found supply");
 
                 int supplyFound = Random.Range(minSupplyFound, maxSupplyFound);
-                ship.AddResource(Resource.Supply, supplyFound);
+                ship.AddResource(Resource.Supply, ref supplyFound);
                 scoutingFind.supplyFound += supplyFound;
 
                 if (ship.Supply == ship.MaxSupply)

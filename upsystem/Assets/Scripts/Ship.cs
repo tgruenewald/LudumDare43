@@ -123,7 +123,10 @@ public class Ship : MonoBehaviour
     }
 
     //Properties
-    public String Name { get; set; }
+    private String _name = "null";
+    public virtual String Name { get { return _name; } set { this._name += value; } }
+
+
     public String State { get { return _state.ToString(); } }
 
 
@@ -399,7 +402,7 @@ public class Ship : MonoBehaviour
     /// </summary>
     /// <param name="ResourceType"></param>
     /// <param name="Amount"></param>
-    public void AddResource(Resource ResourceType, int Amount)
+    public void AddResource(Resource ResourceType, ref int Amount)
     {
         switch (ResourceType)
         {
@@ -407,21 +410,33 @@ public class Ship : MonoBehaviour
                 if (_crew < _maxCrew)
                 {
                     _crew += Amount;
-                    if (_crew > _maxCrew) _crew = _maxCrew;
+                    if (_crew > _maxCrew)
+                    {
+                        _crew = _maxCrew;
+                        Amount = _crew;
+                    }
                 }
                 break;
             case Resource.Supply:
                 if(_supply < _maxSupply)
                 {
                     _supply += Amount;
-                    if (_supply > _maxSupply) _supply = _maxSupply;
+                    if (_supply > _maxSupply)
+                    {
+                        _supply = _maxSupply;
+                        Amount = _supply;
+                    }
                 }
                 break;
             case Resource.Fuel:
                 if(_fuel < _maxFuel)
                 {
                     _fuel += Amount;
-                    if (_fuel > _maxFuel) _fuel = _maxFuel;
+                    if (_fuel > _maxFuel)
+                    {
+                        _fuel = _maxFuel;
+                        Amount = _fuel;
+                    } 
                 }
                 break;
             default:
