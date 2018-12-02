@@ -589,10 +589,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _crew: 1
-  _supply: 1
+  _supply: 2
   _fuel: 3
   _maxCrew: 2
-  _maxSupply: 2
+  _maxSupply: 4
   _maxFuel: 4
   Name: Ship
 --- !u!114 &114144521712940498

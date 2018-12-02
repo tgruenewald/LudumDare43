@@ -486,7 +486,7 @@ MonoBehaviour:
   _supply: 1
   _fuel: 1
   _maxCrew: 8
-  _maxSupply: 2
+  _maxSupply: 16
   _maxFuel: 2
   Name: Passenger Ship
 --- !u!114 &114064142859258732
