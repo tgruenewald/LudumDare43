@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 222336857974550452}
   - component: {fileID: 114852357028805216}
   - component: {fileID: 114950545956808432}
+  - component: {fileID: 114894341557715564}
   m_Layer: 5
   m_Name: Scout
   m_TagString: Untagged
@@ -220,6 +221,7 @@ GameObject:
   - component: {fileID: 222906517651145170}
   - component: {fileID: 114064142859258732}
   - component: {fileID: 114652337079173584}
+  - component: {fileID: 114648387438295148}
   m_Layer: 5
   m_Name: Xfer
   m_TagString: Untagged
@@ -352,6 +354,7 @@ GameObject:
   - component: {fileID: 222596086246840634}
   - component: {fileID: 114276094999106132}
   - component: {fileID: 114076025484170138}
+  - component: {fileID: 114257420914581682}
   m_Layer: 5
   m_Name: Repair
   m_TagString: Untagged
@@ -516,7 +519,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114276094999106132}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114257420914581682}
+        m_MethodName: ShipAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114182017710663210
@@ -594,6 +608,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114257420914581682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1965792789285056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4d31c953413c9498db87ab4244f11e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 114023247714694926}
+  action: 3
 --- !u!114 &114276094999106132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -898,6 +925,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114648387438295148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1551197901598034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4d31c953413c9498db87ab4244f11e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 114023247714694926}
+  action: 1
 --- !u!114 &114652337079173584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -936,7 +976,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114064142859258732}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114648387438295148}
+        m_MethodName: ShipAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114848045564611172
@@ -999,6 +1050,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114894341557715564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1407790210633022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4d31c953413c9498db87ab4244f11e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 114023247714694926}
+  action: 2
 --- !u!114 &114934138328502518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1064,7 +1128,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114852357028805216}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114894341557715564}
+        m_MethodName: ShipAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!212 &212628454412854942
