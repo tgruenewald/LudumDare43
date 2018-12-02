@@ -106,6 +106,8 @@ public class GameStateManager : MonoBehaviour
     public void Jump()
     {
         jumpNumber++;
+        gameState = GameState.defaultState;
+
         if (jumpNumber == numberOfJumpsToWin)
         {
             Victory();
@@ -129,12 +131,11 @@ public class GameStateManager : MonoBehaviour
     void ResetTurns()
     {
         bearsArrived = false;
+        bearFleet.SetActive(false);
         jumpButton.interactable = true;
         endRoundButton.interactable = true;
         turnNumber = 0;
         turnOfBearArrival = Random.Range(minTurnsForBearAttack, maxTurnsForBearAttack);
-
-
     }
 
     void ResetJumps()
