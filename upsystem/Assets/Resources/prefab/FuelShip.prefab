@@ -455,10 +455,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _crew: 3
-  _supply: 2
+  _supply: 6
   _fuel: 7
   _maxCrew: 4
-  _maxSupply: 2
+  _maxSupply: 8
   _maxFuel: 12
 --- !u!114 &114366991565511762
 MonoBehaviour:
