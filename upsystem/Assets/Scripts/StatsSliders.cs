@@ -15,7 +15,7 @@ public class StatsSliders : MonoBehaviour {
     }
 
     private bool needsRefresh = false;
-    void UpdateSliders()
+    public void UpdateSliders()
     {
         SetCrew(mParentShip.Crew);
         SetSupplies(mParentShip.Supply);
@@ -26,6 +26,7 @@ public class StatsSliders : MonoBehaviour {
 	void Start () {
 
         GameStateManager.Instance.Jumped += Refresh;
+        GameStateManager.Instance.TurnEnded += Refresh;
 
         mCrewSlider = this.transform
                           .GetChild(0)

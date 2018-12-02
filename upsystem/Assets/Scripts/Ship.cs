@@ -200,8 +200,9 @@ public class Ship : MonoBehaviour
             }
             if (Amount > 0)
             {
-                ShipFrom.Transfer(false, ResourceType, Amount);
-                ShipTo.Transfer(true, ResourceType, Amount);
+                ShipTo.Transfer(true, ResourceType, ref Amount);
+                ShipFrom.Transfer(false, ResourceType, ref Amount);
+
                 return true;
             }
             //nothing to transfer
@@ -213,23 +214,38 @@ public class Ship : MonoBehaviour
         }
     }
 
-    private void Transfer(bool TransferringToShip, Resource ResourceType, int Amount)
+    private void Transfer(bool doIAdd, Resource ResourceType, ref int Amount)
     {
-        if(TransferringToShip)
+        if(doIAdd)
         {
             switch (ResourceType)
             {
                 case Resource.Crew:
-                    _crew += Amount;
-                    if (_crew > _maxCrew) _crew = _maxCrew;
+                    if (_crew + Amount > _maxCrew) {
+                        Amount = _maxCrew - _crew;
+                        _crew = _maxCrew;
+                    } 
+                    else {
+                        _crew += Amount;
+                    }
                     break;
                 case Resource.Supply:
-                    _supply += Amount;
-                    if (_supply > _maxSupply) _supply = _maxSupply;
+                    if (_supply + Amount > _maxSupply) {
+                        Amount = _maxSupply - _supply;
+                        _supply = _maxSupply;
+                    } 
+                    else {
+                        _supply += Amount;
+                    }
                     break;
                 case Resource.Fuel:
-                    _fuel += Amount;
-                    if (_fuel > _maxFuel) _fuel = _maxFuel;
+                    if (_fuel + Amount > _maxFuel) {
+                        Amount = _maxFuel - _fuel;
+                        _fuel = _maxFuel;
+                    } 
+                    else {
+                        _fuel += Amount;
+                    }
                     break;
                 default:
                     break;
@@ -256,6 +272,7 @@ public class Ship : MonoBehaviour
             }
         }
         _state = ShipState.Transfering;
+        mStatsSliders.UpdateSliders();
     }
 
     /// <summary>

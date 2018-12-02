@@ -82,6 +82,7 @@ public class TransferDialog : MonoBehaviour {
 		refresh();
 	}	
 	public void close() {
+		GameStateManager.CloseTransferDialog();
         GameObject dialogCam = GameObject.Find("DialogCamera");
         dialogCam.GetComponent<Camera>().enabled = false;		
 		// TODO: This just closes the dialog
