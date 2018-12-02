@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ActionSelectors
   - StatsSliders
+  - HazardSprite
   layers:
   - Default
   - TransparentFX
