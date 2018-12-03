@@ -56,7 +56,10 @@ public class Tutorial : MonoBehaviour
 
         highlight1.HighLight();
         highlight2.HighLight();
+        
         DialogManager.DisplayMessage(trade);
+        DialogManager.DisplayMessage("The route is treacherous and Bearlon ambushers threaten us at every turn...");
+        DialogManager.DisplayMessage("The time has come for our fleet to make its way to the home world.");
     }
 
     public void TeachRepair()

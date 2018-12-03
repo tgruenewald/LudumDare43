@@ -13,6 +13,12 @@ public class TransferDialog : MonoBehaviour {
 	public GameObject fuel1;
 	public GameObject fuel2;
 
+	public GameObject crew1Max;
+	public GameObject crew2Max;
+	public GameObject supply1Max;
+	public GameObject supply2Max;
+	public GameObject fuel1Max;
+	public GameObject fuel2Max;
 	public GameObject name1;
 	public GameObject name2;
 
@@ -36,6 +42,9 @@ public class TransferDialog : MonoBehaviour {
 		setCrew1(ship1.Crew);
 		setSupply1(ship1.Supply);
 		setFuel1(ship1.Fuel);		
+		setCrew1Max(ship1.MaxCrew);
+		setSupply1Max(ship1.MaxSupply);
+		setFuel1Max(ship1.MaxFuel);			
 	}
 
 	public void setShip2(Ship ship) 
@@ -44,7 +53,10 @@ public class TransferDialog : MonoBehaviour {
 		name2.GetComponent<Text>().text = ship.Name;
 		setCrew2(ship2.Crew);
 		setSupply2(ship2.Supply);
-		setFuel2(ship2.Fuel);		
+		setFuel2(ship2.Fuel);	
+		setCrew2Max(ship2.MaxCrew);
+		setSupply2Max(ship2.MaxSupply);
+		setFuel2Max(ship2.MaxFuel);				
 	}
 
 	public void refresh() 
@@ -54,7 +66,13 @@ public class TransferDialog : MonoBehaviour {
 		setFuel1(ship1.Fuel);	
 		setCrew2(ship2.Crew);
 		setSupply2(ship2.Supply);
-		setFuel2(ship2.Fuel);				
+		setFuel2(ship2.Fuel);	
+		setCrew2Max(ship2.MaxCrew);
+		setSupply2Max(ship2.MaxSupply);
+		setFuel2Max(ship2.MaxFuel);		
+		setCrew1Max(ship1.MaxCrew);
+		setSupply1Max(ship1.MaxSupply);
+		setFuel1Max(ship1.MaxFuel);							
 	}
 
 	public void send1Crew2() 
@@ -161,4 +179,32 @@ public class TransferDialog : MonoBehaviour {
 		return int.Parse(fuel2.GetComponent<Text>().text);
 	}	
 		
+	public void setCrew1Max(int count) 
+	{
+		crew1Max.GetComponent<Text>().text = "/" + count;
+	}
+
+	public void setCrew2Max(int count) 
+	{
+		crew2Max.GetComponent<Text>().text = "/" + count;
+	}
+
+	public void setSupply1Max(int count) 
+	{
+		supply1Max.GetComponent<Text>().text = "/" + count;
+	}
+
+	public void setSupply2Max(int count) 
+	{
+		supply2Max.GetComponent<Text>().text = "/" + count;
+	}
+
+	public void setFuel1Max(int count)
+	{
+		fuel1Max.GetComponent<Text>().text = "/" + count;
+	}
+	public void setFuel2Max(int count) 
+	{
+		fuel2Max.GetComponent<Text>().text = "/" + count;
+	}			
 }
