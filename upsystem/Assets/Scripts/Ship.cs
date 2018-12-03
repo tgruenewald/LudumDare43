@@ -219,6 +219,7 @@ public class Ship : MonoBehaviour
     /// <returns></returns>
     public static bool Transfer(Ship ShipTo, Ship ShipFrom, Resource ResourceType, ref int Amount)
     {
+        AudioManager.Instance.PlaySound(AudioClips.Transfer);
         ShipTo.EndShipTurn();
         ShipFrom.EndShipTurn();
         //Check if either ship is busy
@@ -325,6 +326,7 @@ public class Ship : MonoBehaviour
     /// </summary>
     public virtual void Scout()
     {
+        AudioManager.Instance.PlaySound(AudioClips.Scout);
         EndShipTurn();
         Debug.Log("Scouting.");
         if (_state == ShipState.Idle)
@@ -338,6 +340,7 @@ public class Ship : MonoBehaviour
     /// </summary>
     public virtual void Repair()
     {
+        AudioManager.Instance.PlaySound(AudioClips.Repair);
         EndShipTurn();
 
         Debug.Log("Repairing.");
@@ -353,6 +356,7 @@ public class Ship : MonoBehaviour
     /// <returns>Indicates if the ship survives the damage</returns>
     public virtual bool TakeDamage()
     {
+        AudioManager.Instance.PlaySound(AudioClips.RedAlert);
         if (_healthy)
         {
             _healthy = false;
