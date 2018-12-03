@@ -101,6 +101,19 @@ public class DialogManager: MonoBehaviour
         shipSpecDialog.transform.Find("Crew").GetComponent<Text>().text = "Crew: " + ship.Crew + "/" + ship.MaxCrew;
         shipSpecDialog.transform.Find("Supply").GetComponent<Text>().text = "Supply: " + ship.Supply + "/" + ship.MaxSupply;
         shipSpecDialog.transform.Find("Fuel").GetComponent<Text>().text = "Fuel: " + ship.Fuel + "/" + ship.MaxFuel;
+
+        if (!ship._healthy)
+        {
+            shipSpecDialog.transform.Find("Message").GetComponent<Text>().text = "Repair hyperdrive. This ship cannot jump.  ";
+        }
+        if (ship.Fuel <= 0) 
+        {
+           shipSpecDialog.transform.Find("Message").GetComponent<Text>().text = shipSpecDialog.transform.Find("Message").GetComponent<Text>().text + "Not enough fuel to jump."; 
+        }
+        if (ship.Supply <= 0)
+        {
+            shipSpecDialog.transform.Find("Message").GetComponent<Text>().text = shipSpecDialog.transform.Find("Message").GetComponent<Text>().text + "Not enough supplies to jump.";
+        }
     }
 
     public static void SacrificeShip()
