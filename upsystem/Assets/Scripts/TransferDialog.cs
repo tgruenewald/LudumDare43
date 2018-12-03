@@ -13,6 +13,9 @@ public class TransferDialog : MonoBehaviour {
 	public GameObject fuel1;
 	public GameObject fuel2;
 
+	public GameObject name1;
+	public GameObject name2;
+
 	public Ship ship1;
 	public Ship ship2;
 	void Start () 
@@ -29,6 +32,7 @@ public class TransferDialog : MonoBehaviour {
 	public void setShip1(Ship ship) 
 	{
 		ship1 = ship;
+		name1.GetComponent<Text>().text = ship.Name;
 		setCrew1(ship1.Crew);
 		setSupply1(ship1.Supply);
 		setFuel1(ship1.Fuel);		
@@ -37,6 +41,7 @@ public class TransferDialog : MonoBehaviour {
 	public void setShip2(Ship ship) 
 	{
 		ship2 = ship;
+		name2.GetComponent<Text>().text = ship.Name;
 		setCrew2(ship2.Crew);
 		setSupply2(ship2.Supply);
 		setFuel2(ship2.Fuel);		

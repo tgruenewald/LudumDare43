@@ -72,6 +72,6 @@ public class DialogManager: MonoBehaviour
         else if (ship.shipsFound > 0) {
             whatFound = "" + ship.shipsFound + " ships";
         }
-        DialogManager.DisplayMessage("Scouting mission returned with " + whatFound);        
+        DialogManager.DisplayMessage(ship.ship.Name + " returned with " + whatFound);        
     }      
 }
