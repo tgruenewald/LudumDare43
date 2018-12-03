@@ -103,9 +103,7 @@ public class Ship : MonoBehaviour
             }
             else if (GameStateManager.Instance.GetState() == GameStateManager.GameState.sacrifice)
             {
-                _state = ShipState.Destroyed;
-                GameStateManager.Instance.fleetManager.ShipAction(FleetManager.ShipActions.sacrifice, this);
-                EndShipTurn();
+                DialogManager.AreYouSureMessage(this);
             }
             else if (GameStateManager.Instance.GetState() == GameStateManager.GameState.transfer)
             {
@@ -115,6 +113,13 @@ public class Ship : MonoBehaviour
         }
         mStatsSliders.Show();
         DialogManager.showShipSpec(this);
+    }
+
+    public void SacrificeShip()
+    {
+        _state = ShipState.Destroyed;
+        GameStateManager.Instance.fleetManager.ShipAction(FleetManager.ShipActions.sacrifice, this);
+        EndShipTurn();
     }
 
     public void HideActions()
