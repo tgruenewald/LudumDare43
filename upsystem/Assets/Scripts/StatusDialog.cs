@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StatusDialog : MonoBehaviour {
 
+	Ship ship;
 	// Use this for initialization
 	void Start () {
 		
@@ -13,8 +14,21 @@ public class StatusDialog : MonoBehaviour {
 	void Update () {
 		
 	}
+	public void setShipToBeDestroyed(Ship myship)
+	{
+		ship = myship;
+	}
 
 	public void close() {
 		Destroy(gameObject);
+	}
+
+	public void letlive() {
+		close();
+	}
+
+	public void theyshoulddie() {
+		DialogManager.SacrificeShip();
+		close();
 	}
 }
