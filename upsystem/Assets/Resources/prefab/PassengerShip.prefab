@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 61265366769391680}
   - component: {fileID: 114023247714694926}
   - component: {fileID: 114441904032705466}
+  - component: {fileID: 114898636902884514}
   m_Layer: 5
   m_Name: PassengerShip
   m_TagString: Untagged
@@ -1136,6 +1137,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114898636902884514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1374065117399038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fdf3f881cdba064cae309dc2590b122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114915089173887158
 MonoBehaviour:
   m_ObjectHideFlags: 1

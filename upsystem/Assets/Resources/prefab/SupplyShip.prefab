@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 61734789691892976}
   - component: {fileID: 114077536306363048}
   - component: {fileID: 114511313164906626}
+  - component: {fileID: 114885493626620316}
   m_Layer: 5
   m_Name: SupplyShip
   m_TagString: Untagged
@@ -1057,6 +1058,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114885493626620316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1783026161447252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fdf3f881cdba064cae309dc2590b122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114909421830791212
 MonoBehaviour:
   m_ObjectHideFlags: 1

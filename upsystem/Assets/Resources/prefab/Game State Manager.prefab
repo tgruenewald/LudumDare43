@@ -90,7 +90,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1177216071954884
 GameObject:
   m_ObjectHideFlags: 1
@@ -518,6 +518,7 @@ GameObject:
   - component: {fileID: 4779886833410510}
   - component: {fileID: 114874095985390104}
   - component: {fileID: 114157499196297526}
+  - component: {fileID: 114243388514781242}
   m_Layer: 0
   m_Name: Game State Manager
   m_TagString: Untagged
@@ -1605,6 +1606,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMin: 1.01
   speedMax: 2
+--- !u!114 &114243388514781242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1612944860069754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 365b826460d020d4393d098e3801d28b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tradeShip1: {fileID: 0}
+  tradeShip2: {fileID: 0}
+  repairShip: {fileID: 0}
+  scoutShip1: {fileID: 0}
+  scoutShip2: {fileID: 0}
+  trade: One of these ships is low on fuel and the other is low on supply. You can
+    trade between them. Select one and press the transfer(yellow) icon.
+  repair: This ship is damaged. You can select it and hit the red button to repair.
+  scout: These other two ships can go out to scout. Select them and select the wave
+    button.
 --- !u!114 &114252558114069618
 MonoBehaviour:
   m_ObjectHideFlags: 1

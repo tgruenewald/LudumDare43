@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 61069623529710236}
   - component: {fileID: 114131636021016784}
   - component: {fileID: 114555255844253436}
+  - component: {fileID: 114747430934760168}
   m_Layer: 5
   m_Name: ScoutShip
   m_TagString: Untagged
@@ -445,7 +446,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.01, y: 3.02}
+    oldSize: {x: 3.853846, y: 2.323077}
     newSize: {x: 3, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1183,6 +1184,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114747430934760168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1471732234584782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fdf3f881cdba064cae309dc2590b122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114940247238722334
 MonoBehaviour:
   m_ObjectHideFlags: 1

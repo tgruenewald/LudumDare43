@@ -26,6 +26,10 @@ public class DialogManager: MonoBehaviour
     }
     public static void CloseTransferDialog() 
     {
+        if(GameStateManager.Instance.tutorialOn)
+        {
+            GameStateManager.Instance.tutorial.TeachRepair();
+        }
         Debug.Log("transfer dialog close");
         Destroy(transferDialog);
     }  
