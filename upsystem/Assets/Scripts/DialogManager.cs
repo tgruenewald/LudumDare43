@@ -36,6 +36,7 @@ public class DialogManager: MonoBehaviour
     }  
 
     public static void DisplayMessage(string msg) {
+        AudioManager.Instance.PlaySound(AudioClips.Click);
         dialog = (GameObject) Instantiate(Resources.Load("prefab/StatusDialog"),new Vector3(0, 0, 0), Quaternion.identity); //GameObject.Find("TransferDialog");
         dialog.transform.SetParent(GameObject.Find("DialogCanvas").transform);
         dialog.transform.localPosition =  new Vector3(270f, 100f, 0f);

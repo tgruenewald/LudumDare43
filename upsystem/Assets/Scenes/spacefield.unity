@@ -150,7 +150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4779886833410510, guid: ed4c2f617486050419d8f7fc5c65c5b3, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114157499196297526, guid: ed4c2f617486050419d8f7fc5c65c5b3,
         type: 2}
@@ -181,6 +181,48 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 93421643}
   m_Script: {fileID: 11500000, guid: 775c5d85f3a554247882f8496085e2c2, type: 3}
+--- !u!1001 &237085108
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4563967595167594, guid: 984ad42bcd8d1418e9de1eb750874c10, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.365225
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563967595167594, guid: 984ad42bcd8d1418e9de1eb750874c10, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.2852019
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563967595167594, guid: 984ad42bcd8d1418e9de1eb750874c10, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.14380294
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563967595167594, guid: 984ad42bcd8d1418e9de1eb750874c10, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563967595167594, guid: 984ad42bcd8d1418e9de1eb750874c10, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563967595167594, guid: 984ad42bcd8d1418e9de1eb750874c10, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563967595167594, guid: 984ad42bcd8d1418e9de1eb750874c10, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563967595167594, guid: 984ad42bcd8d1418e9de1eb750874c10, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 984ad42bcd8d1418e9de1eb750874c10, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!114 &237099206 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114131636021016784, guid: 31ede1f44fb6a430ca561aa18815f2f1,
@@ -232,7 +274,7 @@ Prefab:
     - target: {fileID: 224673414305153380, guid: 3bfafca57cf65e54fa8e4c44a099d530,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224673414305153380, guid: 3bfafca57cf65e54fa8e4c44a099d530,
         type: 2}
@@ -334,7 +376,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4270279008207750, guid: c1938e1f3ad96044ebf84b35055eed7b, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1938e1f3ad96044ebf84b35055eed7b, type: 2}
@@ -351,10 +393,9 @@ GameObject:
   - component: {fileID: 736800485}
   - component: {fileID: 736800484}
   - component: {fileID: 736800483}
-  - component: {fileID: 736800482}
   m_Layer: 5
   m_Name: Jump
-  m_TagString: Untagged
+  m_TagString: JumpButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -378,102 +419,6 @@ RectTransform:
   m_AnchoredPosition: {x: 7, y: -4}
   m_SizeDelta: {x: 78.73, y: 38.731}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!82 &736800482
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 82903283704981658, guid: 1fd8a6cc0e5958342b8dd5c4d3774f19,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 736800480}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3389f2ec691c003478e33894313a0ad2, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &736800483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,8 +459,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 736800482}
-        m_MethodName: Play
+      - m_Target: {fileID: 1813638277}
+        m_MethodName: JumpHandler
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -525,8 +470,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1813638277}
-        m_MethodName: JumpHandler
+      - m_Target: {fileID: 1802417763}
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -671,7 +616,7 @@ RectTransform:
   - {fileID: 1339135733}
   - {fileID: 978945936}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -789,6 +734,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224628800627467880, guid: a741de1dc2df74e659427f947de0c21f,
     type: 2}
   m_PrefabInternal: {fileID: 978945935}
+--- !u!82 &1205095681 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 82254955303043808, guid: 984ad42bcd8d1418e9de1eb750874c10,
+    type: 2}
+  m_PrefabInternal: {fileID: 237085108}
 --- !u!1001 &1228816020
 Prefab:
   m_ObjectHideFlags: 0
@@ -826,7 +776,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4640113017167858, guid: f3ad2d9f64fd3164c9590428899f872e, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3ad2d9f64fd3164c9590428899f872e, type: 2}
@@ -1146,6 +1096,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224973187126610210, guid: 08e8618dae6f94e83849b5e0c6379a1d,
     type: 2}
   m_PrefabInternal: {fileID: 1487320222}
+--- !u!82 &1802417763 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 82955557521556186, guid: 984ad42bcd8d1418e9de1eb750874c10,
+    type: 2}
+  m_PrefabInternal: {fileID: 237085108}
 --- !u!1 &1813638276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,6 +1281,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1205095681}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1829789953
@@ -1431,7 +1397,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2114743043 stripped
 MonoBehaviour:

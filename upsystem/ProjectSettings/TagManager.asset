@@ -8,6 +8,7 @@ TagManager:
   - StatsSliders
   - HazardSprite
   - DamageEffect
+  - JumpButton
   layers:
   - Default
   - TransparentFX
