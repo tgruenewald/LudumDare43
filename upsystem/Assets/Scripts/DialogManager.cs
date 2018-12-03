@@ -8,12 +8,17 @@ public class DialogManager: MonoBehaviour
 {
     static GameObject transferDialog;
     static GameObject sacrificeShipMsg;
+
+    static GameObject dialog;
     public static void TransferDialog(Ship transferShip1, Ship transferShip2 ) 
     {
-
-        transferDialog = (GameObject) Instantiate(Resources.Load("prefab/TransferDialog"),new Vector3(0, 0, 0), Quaternion.identity); //GameObject.Find("TransferDialog");
+        if (dialog != null)
+        {
+            Destroy(dialog);
+        }
+        transferDialog = (GameObject) Instantiate(Resources.Load("prefab/TransferDialog"),new Vector3(270f, 100f, 0f), Quaternion.identity); //GameObject.Find("TransferDialog");
         transferDialog.transform.SetParent(GameObject.Find("DialogCanvas").transform);
-        transferDialog.transform.localPosition =  new Vector3(0f, 0f, 0f);
+        transferDialog.transform.localPosition =  new Vector3(270f, 100f, 0f);
         transferDialog.transform.localScale = new Vector3(1f, 1f, 1f);
         
 
@@ -32,9 +37,9 @@ public class DialogManager: MonoBehaviour
 
     public static void DisplayMessage(string msg) {
         AudioManager.Instance.PlaySound(AudioClips.Click);
-        GameObject dialog = (GameObject) Instantiate(Resources.Load("prefab/StatusDialog"),new Vector3(0, 0, 0), Quaternion.identity); //GameObject.Find("TransferDialog");
+        dialog = (GameObject) Instantiate(Resources.Load("prefab/StatusDialog"),new Vector3(0, 0, 0), Quaternion.identity); //GameObject.Find("TransferDialog");
         dialog.transform.SetParent(GameObject.Find("DialogCanvas").transform);
-        dialog.transform.localPosition =  new Vector3(0f, 0f, 0f);
+        dialog.transform.localPosition =  new Vector3(270f, 100f, 0f);
         dialog.transform.localScale = new Vector3(1f, 1f, 1f);
 
         // dialog.GetComponent<DialogTrigger>()
@@ -67,6 +72,6 @@ public class DialogManager: MonoBehaviour
         else if (ship.shipsFound > 0) {
             whatFound = "" + ship.shipsFound + " ships";
         }
-        DialogManager.DisplayMessage("Scouting mission returned with " + whatFound);        
+        DialogManager.DisplayMessage(ship.ship.Name + " returned with " + whatFound);        
     }      
 }
