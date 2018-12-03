@@ -1,5 +1,7 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Custom/Move"
 {
 	Properties
@@ -10,6 +12,11 @@ Shader "Custom/Move"
 
 		_Speed("Speed", Range(-10,10)) = 0
 		_Offset("Offset", Range(-.1,.1)) = 0
+
+
+        // Add values to determine if outlining is enabled and outline color.
+        _Outline("Outline", Float) = 0
+        _OutlineColor("Outline Color", Color) = (1,1,1,1)
 	}
 
 		SubShader
@@ -72,6 +79,10 @@ Shader "Custom/Move"
 	float _AlphaSplitEnabled;
     float _Speed;
     float _Offset;
+    float _Outline;
+    fixed4 _OutlineColor;
+    float4 _MainTex_TexelSize;
+
 	fixed4 SampleSpriteTexture(float2 uv)
 	{
 		fixed4 color = tex2D(_MainTex, uv);
@@ -86,10 +97,25 @@ Shader "Custom/Move"
 
 	fixed4 frag(v2f IN) : SV_Target
 	{
-        float offS  = sin(_Speed * _Time.y) * _Offset;
-		fixed4 c = SampleSpriteTexture(IN.texcoord + float2(0, offS)) * IN.color;
+        float offS = sin(_Speed * _Time.y) * _Offset;
+        IN.texcoord = IN.texcoord + float2(0, offS);
+        fixed4 c = SampleSpriteTexture(IN.texcoord) * IN.color;
+        if (_Outline > 0 && c.a != 0) {
+            // Get the neighbouring four pixels.
+
+            fixed4 pixelUp = tex2D(_MainTex, IN.texcoord + fixed2(0, _MainTex_TexelSize.y + _Outline));
+            fixed4 pixelDown = tex2D(_MainTex, IN.texcoord - fixed2(0, _MainTex_TexelSize.y + _Outline));
+            fixed4 pixelRight = tex2D(_MainTex, IN.texcoord + fixed2(_MainTex_TexelSize.x + _Outline, 0));
+            fixed4 pixelLeft = tex2D(_MainTex, IN.texcoord - fixed2(_MainTex_TexelSize.x + _Outline, 0));
+
+            // If one of the neighbouring pixels is invisible, we render an outline.
+            if (pixelUp.a * pixelDown.a * pixelRight.a * pixelLeft.a == 0) {
+                c.rgba = fixed4(1, 1, 1, 1) * _OutlineColor;
+            }
+        }
         c.rgb *= c.a;
-		return c;
+
+        return c;
 	
 	}
 		ENDCG
