@@ -53,6 +53,16 @@ public class FleetManager : MonoBehaviour {
             }
         }
     }
+
+    public int NumberOfCrew()
+    {
+        int numCrew = 0;
+        foreach(Ship ship in fleet)
+        {
+            numCrew += ship.Crew;
+        }
+        return numCrew;
+    }
     public void ClearScoutingShips()
     {
         scoutingShips.Clear();
