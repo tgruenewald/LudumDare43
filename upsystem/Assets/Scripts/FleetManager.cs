@@ -38,6 +38,21 @@ public class FleetManager : MonoBehaviour {
     public int minSupplyFound = 1;
     public int maxSupplyFound = 10;
 
+    public void HighlightShips(bool hl)
+    {
+        foreach(Ship ship in fleet)
+        {
+            HighlightShip highlight = ship.gameObject.GetComponent<HighlightShip>() as HighlightShip;
+            if(hl)
+            {
+                highlight.HighLight();
+            }
+            else
+            {
+                highlight.StopHighlighting();
+            }
+        }
+    }
     public void ClearScoutingShips()
     {
         scoutingShips.Clear();

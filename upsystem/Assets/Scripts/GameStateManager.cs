@@ -77,6 +77,7 @@ public class GameStateManager : MonoBehaviour
         }
         else if (action == FleetManager.ShipActions.sacrifice)
         {
+            fleetManager.HighlightShips(false);
             endRoundButton.interactable = true;
             gameState = GameState.defaultState;
             DialogManager.SacrificeShipMessage(false);
@@ -107,6 +108,15 @@ public class GameStateManager : MonoBehaviour
 
     public void EndTurn()
     {
+
+        bool bears = false;
+        if(tutorialOn)
+        {
+            bears = true;
+            tutorialOn = false;
+            tutorial.EndTutorial();
+        }
+        fleetManager.HighlightShips(false);
         bearFleet.SetActive(false);
         gameState = GameState.defaultState;
         turnNumber++;
@@ -117,7 +127,7 @@ public class GameStateManager : MonoBehaviour
             TurnEnded();
         }
         fleetManager.UpdateScoutingShips();
-        if (turnNumber >= turnOfBearArrival || tutorialOn)
+        if (turnNumber >= turnOfBearArrival || bears)
         {
             BearsArrive();
         }
@@ -125,13 +135,10 @@ public class GameStateManager : MonoBehaviour
 
     public void Jump()
     {
+        fleetManager.HighlightShips(false);
         DialogManager.SacrificeShipMessage(false);
         jumpNumber++;
-        if (jumpNumber > 0 && tutorialOn)
-        {
-            tutorialOn = false;
-            tutorial.EndTutorial();
-        }
+
         gameState = GameState.defaultState;
 
         if (Jumped != null)
@@ -196,6 +203,7 @@ public class GameStateManager : MonoBehaviour
 
     void BearsArrive()
     {
+        fleetManager.HighlightShips(true);
         AudioManager.Instance.PlaySound(AudioClips.BearGrowl);
         gameState = GameState.sacrifice;
         endRoundButton.interactable = false;

@@ -106,6 +106,21 @@ public class Tutorial : MonoBehaviour
         HighlightShip highlight4 = scoutShip1.GetComponent<HighlightShip>();
         HighlightShip highlight5 = scoutShip2.GetComponent<HighlightShip>();
 
+        Ship ship1 = tradeShip1.GetComponent<Ship>() as Ship;
+        ship1.tutorialDisabled = false;
+
+        Ship ship2 = tradeShip2.GetComponent<Ship>() as Ship;
+        ship2.tutorialDisabled = false;
+
+        Ship ship3 = repairShip.GetComponent<Ship>() as Ship;
+        ship3.tutorialDisabled = false;
+
+        Ship ship4 = scoutShip1.GetComponent<Ship>() as Ship;
+        ship4.tutorialDisabled = false;
+
+        Ship ship5 = scoutShip2.GetComponent<Ship>() as Ship;
+        ship5.tutorialDisabled = false;
+
         highlight1.StopHighlighting();
         highlight2.StopHighlighting();
         highlight3.StopHighlighting();
