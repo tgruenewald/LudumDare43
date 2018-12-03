@@ -243,7 +243,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: d1bf420e3278e4abd945529be272f23b, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -255,20 +255,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Credits
-
-
-    Lorem Ipsum dolar sit amit
-
-    Lorem Ipsum dolar sit amit
-
-    Lorem Ipsum dolar sit amit
-
-    Lorem Ipsum dolar sit amit
-
-    Lorem Ipsum dolar sit amit
-
-'
+  m_Text: "Credits\n\nTerry Gruenewald\r\nJack Campbell\r\nBranden Strochinsky\r\nRyan
+    Strochinsky\r\nChandler Norris\r\nBrian Trotter\r\nAdam Williams\nTamara Gruenewald\nKatherine
+    Gruenewald\n"
 --- !u!222 &537037226
 CanvasRenderer:
   m_ObjectHideFlags: 0

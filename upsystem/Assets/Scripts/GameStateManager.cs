@@ -136,7 +136,7 @@ public class GameStateManager : MonoBehaviour
         fleetManager.HighlightShips(false);
         DialogManager.SacrificeShipMessage(false);
         jumpNumber++;
-
+        updateJumpsToWin();
         gameState = GameState.defaultState;
 
         if (Jumped != null)
@@ -180,8 +180,13 @@ public class GameStateManager : MonoBehaviour
     {
         jumpNumber = 0;
         numberOfJumpsToWin = Random.Range(minJumpsToWin, maxJumpsToWin);
+        updateJumpsToWin();
     }
+    public void updateJumpsToWin() {
+        GameObject counter = GameObject.Find("JumpsLeftCount");
 
+        counter.GetComponent<Text>().text = "" + (numberOfJumpsToWin - jumpNumber);
+    }
     void Victory()
     {
         GameObject camera = GameObject.Find("Main Camera");
