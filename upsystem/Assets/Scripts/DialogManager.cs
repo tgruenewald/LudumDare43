@@ -42,6 +42,7 @@ public class DialogManager: MonoBehaviour
 
     public static void TransferDialog(Ship transferShip1, Ship transferShip2 ) 
     {
+        showSpec = true;
         if (dialog != null)
         {
             Destroy(dialog);
@@ -114,6 +115,10 @@ public class DialogManager: MonoBehaviour
         {
             shipSpecDialog.transform.Find("Message").GetComponent<Text>().text = shipSpecDialog.transform.Find("Message").GetComponent<Text>().text + "Not enough supplies to jump.";
         }
+        if (ship.Crew <= 0)
+        {
+            shipSpecDialog.transform.Find("Message").GetComponent<Text>().text = shipSpecDialog.transform.Find("Message").GetComponent<Text>().text + "Not enough crew to run ship.";
+        }        
     }
 
     public static void SacrificeShip()
