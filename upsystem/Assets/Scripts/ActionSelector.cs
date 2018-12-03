@@ -63,6 +63,7 @@ public class ActionSelector : MonoBehaviour {
     // Set the buttons to show or not show depending on their current state
     public void Toggle()
     {
+        AudioManager.Instance.PlaySound(AudioClips.ShipClick);
         GameStateManager.Instance.CloseActionsExceptFor(mShip);
         mActionContainer.SetActive(!mActionContainer.activeInHierarchy);
     }
@@ -87,7 +88,7 @@ public class ActionSelector : MonoBehaviour {
     public void XferClicked()
     {
         GameStateManager.Instance.fleetManager.ShipAction(FleetManager.ShipActions.transfer, mShip);
-
+        AudioManager.Instance.PlaySound(AudioClips.Transfer);
         Debug.Log("Xfer clicked.");  
 
     }
