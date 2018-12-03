@@ -175,6 +175,7 @@ public class Ship : MonoBehaviour
     /// </summary>
     public virtual void Jump()
     {
+        DialogManager.CloseAllDialogs();
         if (!_healthy) _state = ShipState.Destroyed;
         //Check fuel status
         if (_fuel > 0)
@@ -230,6 +231,7 @@ public class Ship : MonoBehaviour
     /// <returns></returns>
     public static bool Transfer(Ship ShipTo, Ship ShipFrom, Resource ResourceType, ref int Amount)
     {
+        
         AudioManager.Instance.PlaySound(AudioClips.Transfer);
         ShipTo.EndShipTurn();
         ShipFrom.EndShipTurn();
@@ -273,6 +275,7 @@ public class Ship : MonoBehaviour
 
     private void Transfer(bool doIAdd, Resource ResourceType, ref int Amount)
     {
+        
         if(doIAdd)
         {
             switch (ResourceType)
@@ -337,6 +340,9 @@ public class Ship : MonoBehaviour
     /// </summary>
     public virtual void Scout()
     {
+        DialogManager.CloseAllDialogs();
+        if (GameStateManager.Instance.tutorialOn == true )
+                GameStateManager.Instance.tutorial.TeachEndTurn();     
         AudioManager.Instance.PlaySound(AudioClips.Scout);
         EndShipTurn();
         Debug.Log("Scouting.");
@@ -351,6 +357,9 @@ public class Ship : MonoBehaviour
     /// </summary>
     public virtual void Repair()
     {
+        DialogManager.CloseAllDialogs();
+        if (GameStateManager.Instance.tutorialOn == true )
+                GameStateManager.Instance.tutorial.TeachScout();
         AudioManager.Instance.PlaySound(AudioClips.Repair);
         EndShipTurn();
 
