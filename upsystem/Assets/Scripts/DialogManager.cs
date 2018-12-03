@@ -12,6 +12,34 @@ public class DialogManager: MonoBehaviour
     static GameObject dialog;
     static GameObject shipSpecDialog;
 
+    static Ship shipToBeDestroyed;
+    static List<GameObject> dialogList = new List<GameObject>();
+
+    static bool showSpec = true;
+
+    public static void AddDialog(GameObject addedDialog)
+    {
+        dialogList.Add(addedDialog);
+    }
+    public static void CloseAllDialogs()
+    {
+        Debug.Log("Closing all dialogs");
+        showSpec = true;
+        foreach (GameObject d in dialogList)
+        {
+            if (d == null)
+            {
+                //dialogList.Remove(d);
+            }
+            else
+            {
+                Destroy(d);
+              //  dialogList.Remove(d);
+            }
+        }
+        dialogList.RemoveAll(x => x == null);
+    }
+
     public static void TransferDialog(Ship transferShip1, Ship transferShip2 ) 
     {
         if (dialog != null)
@@ -19,6 +47,7 @@ public class DialogManager: MonoBehaviour
             Destroy(dialog);
         }
         transferDialog = (GameObject) Instantiate(Resources.Load("prefab/TransferDialog"),new Vector3(270f, 100f, 0f), Quaternion.identity); //GameObject.Find("TransferDialog");
+        AddDialog(transferDialog);
         transferDialog.transform.SetParent(GameObject.Find("DialogCanvas").transform);
         transferDialog.transform.localPosition =  new Vector3(270f, 100f, 0f);
         transferDialog.transform.localScale = new Vector3(1f, 1f, 1f);
@@ -41,6 +70,7 @@ public class DialogManager: MonoBehaviour
 
     public static void hideShipSpec()
     {
+        showSpec = true;
         if (shipSpecDialog != null) 
         {
             Destroy(shipSpecDialog);
@@ -48,13 +78,21 @@ public class DialogManager: MonoBehaviour
     }
     public static void showShipSpec(Ship ship) 
     {
+        if (!showSpec) {
+            return;
+        }
+        showSpec = false;
+
         if (shipSpecDialog != null) 
         {
             Destroy(shipSpecDialog);
         }
+        if (shipToBeDestroyed != null) {
+            return; // don't display specs until ship is chosen
+        }
         AudioManager.Instance.PlaySound(AudioClips.Click);
-        Debug.Log("Type: " + ship.GetType().Name);
         shipSpecDialog = (GameObject) Instantiate(Resources.Load("prefab/"+ship.GetType().Name+"Spec"),new Vector3(0, 0, 0), Quaternion.identity); //GameObject.Find("TransferDialog");
+        AddDialog(shipSpecDialog);
         shipSpecDialog.transform.SetParent(GameObject.Find("DialogCanvas").transform);
         shipSpecDialog.transform.localPosition =  new Vector3(270f, 100f, 0f);
         shipSpecDialog.transform.localScale = new Vector3(1f, 1f, 1f);
@@ -63,11 +101,49 @@ public class DialogManager: MonoBehaviour
         shipSpecDialog.transform.Find("Crew").GetComponent<Text>().text = "Crew: " + ship.Crew + "/" + ship.MaxCrew;
         shipSpecDialog.transform.Find("Supply").GetComponent<Text>().text = "Supply: " + ship.Supply + "/" + ship.MaxSupply;
         shipSpecDialog.transform.Find("Fuel").GetComponent<Text>().text = "Fuel: " + ship.Fuel + "/" + ship.MaxFuel;
+
+        if (!ship._healthy)
+        {
+            shipSpecDialog.transform.Find("Message").GetComponent<Text>().text = "Repair hyperdrive. This ship cannot jump.  ";
+        }
+        if (ship.Fuel <= 0) 
+        {
+           shipSpecDialog.transform.Find("Message").GetComponent<Text>().text = shipSpecDialog.transform.Find("Message").GetComponent<Text>().text + "Not enough fuel to jump."; 
+        }
+        if (ship.Supply <= 0)
+        {
+            shipSpecDialog.transform.Find("Message").GetComponent<Text>().text = shipSpecDialog.transform.Find("Message").GetComponent<Text>().text + "Not enough supplies to jump.";
+        }
     }
+
+    public static void SacrificeShip()
+    {
+        if (shipToBeDestroyed != null)
+        {
+            shipToBeDestroyed.SacrificeShip();
+            shipToBeDestroyed = null;
+        }
+
+    }
+
+    public static void AreYouSureMessage(Ship ship) {
+        AudioManager.Instance.PlaySound(AudioClips.Click);
+        if (shipSpecDialog != null) 
+        {
+            Destroy(shipSpecDialog);
+        }        
+        dialog = (GameObject) Instantiate(Resources.Load("prefab/AreYouSure"),new Vector3(0, 0, 0), Quaternion.identity); //GameObject.Find("TransferDialog");
+        dialog.transform.SetParent(GameObject.Find("DialogCanvas").transform);
+        dialog.transform.localPosition =  new Vector3(270f, 100f, 0f);
+        dialog.transform.localScale = new Vector3(1f, 1f, 1f);
+
+        shipToBeDestroyed = ship;
+    }    
 
     public static void DisplayMessage(string msg) {
         AudioManager.Instance.PlaySound(AudioClips.Click);
         dialog = (GameObject) Instantiate(Resources.Load("prefab/StatusDialog"),new Vector3(0, 0, 0), Quaternion.identity); //GameObject.Find("TransferDialog");
+        AddDialog(dialog);
         dialog.transform.SetParent(GameObject.Find("DialogCanvas").transform);
         dialog.transform.localPosition =  new Vector3(270f, 100f, 0f);
         dialog.transform.localScale = new Vector3(1f, 1f, 1f);
