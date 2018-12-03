@@ -5980,7 +5980,7 @@ MonoBehaviour:
   tutorialDisabled: 0
   _healthy: 1
   _maxCrew: 4
-  _maxSupply: 2
+  _maxSupply: 8
   _maxFuel: 12
 --- !u!114 &114793517042976384
 MonoBehaviour:

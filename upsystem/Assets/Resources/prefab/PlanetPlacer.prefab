@@ -87,6 +87,10 @@ MonoBehaviour:
   planetSprites:
   - {fileID: 21300000, guid: 1149d39d2aa70df47ac73ee4b852cba3, type: 3}
   - {fileID: 21300000, guid: a569bbe4e36a87f429594f8b1dc624cb, type: 3}
+  - {fileID: 21300000, guid: de613e5bc91617f4b9e7f5ce32b4a4d2, type: 3}
+  - {fileID: 21300000, guid: 5e3d19148449ad74b967935a7a9b3d5c, type: 3}
+  - {fileID: 21300000, guid: 493210b117033b64dba051c647b0bc7a, type: 3}
+  - {fileID: 21300000, guid: 134281f19c65e9140878cd887e10a2d8, type: 3}
 --- !u!212 &212885946225439656
 SpriteRenderer:
   m_ObjectHideFlags: 1
