@@ -155,7 +155,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4779886833410510, guid: ed4c2f617486050419d8f7fc5c65c5b3, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114157499196297526, guid: ed4c2f617486050419d8f7fc5c65c5b3,
         type: 2}
@@ -212,6 +212,13 @@ Prefab:
       propertyPath: tutorial
       value: 
       objectReference: {fileID: 1946467733}
+    - target: {fileID: 114243388514781242, guid: ed4c2f617486050419d8f7fc5c65c5b3,
+        type: 2}
+      propertyPath: scout
+      value: These other two ships can go out to scout. Select them and select the
+        wave button. They may return with more resources... or they may not return
+        at all. Only time will tell.";
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed4c2f617486050419d8f7fc5c65c5b3, type: 2}
   m_IsPrefabAsset: 0
@@ -258,17 +265,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4563967595167594, guid: 984ad42bcd8d1418e9de1eb750874c10, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 984ad42bcd8d1418e9de1eb750874c10, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &237099206 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114131636021016784, guid: 31ede1f44fb6a430ca561aa18815f2f1,
-    type: 2}
-  m_PrefabInternal: {fileID: 1339135732}
-  m_Script: {fileID: 11500000, guid: 2a606d1049030444c85154c98f92bc25, type: 3}
 --- !u!1001 &242039917
 Prefab:
   m_ObjectHideFlags: 0
@@ -314,7 +315,7 @@ Prefab:
     - target: {fileID: 224673414305153380, guid: 3bfafca57cf65e54fa8e4c44a099d530,
         type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 224673414305153380, guid: 3bfafca57cf65e54fa8e4c44a099d530,
         type: 2}
@@ -504,7 +505,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1802417763}
+      - m_Target: {fileID: 0}
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
@@ -644,25 +645,15 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 736800481}
-  - {fileID: 1829789951}
-  - {fileID: 1487320223}
-  - {fileID: 1359149012}
-  - {fileID: 1339135733}
   - {fileID: 978945936}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &900741483 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114265869336902380, guid: 08e8618dae6f94e83849b5e0c6379a1d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1487320222}
-  m_Script: {fileID: 11500000, guid: d2695513550754559ba29062f3b7b49b, type: 3}
 --- !u!1001 &978945935
 Prefab:
   m_ObjectHideFlags: 0
@@ -708,7 +699,7 @@ Prefab:
     - target: {fileID: 224628800627467880, guid: a741de1dc2df74e659427f947de0c21f,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224628800627467880, guid: a741de1dc2df74e659427f947de0c21f,
         type: 2}
@@ -768,11 +759,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224628800627467880, guid: a741de1dc2df74e659427f947de0c21f,
     type: 2}
   m_PrefabInternal: {fileID: 978945935}
---- !u!82 &1205095681 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 82254955303043808, guid: 984ad42bcd8d1418e9de1eb750874c10,
-    type: 2}
-  m_PrefabInternal: {fileID: 237085108}
 --- !u!1001 &1228816020
 Prefab:
   m_ObjectHideFlags: 0
@@ -810,7 +796,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4640113017167858, guid: f3ad2d9f64fd3164c9590428899f872e, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3ad2d9f64fd3164c9590428899f872e, type: 2}
@@ -860,7 +846,7 @@ Prefab:
     - target: {fileID: 224081803645473322, guid: 1fd8a6cc0e5958342b8dd5c4d3774f19,
         type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224081803645473322, guid: 1fd8a6cc0e5958342b8dd5c4d3774f19,
         type: 2}
@@ -926,6 +912,21 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: JumpHandler
+      objectReference: {fileID: 0}
+    - target: {fileID: 114676627602090072, guid: 1fd8a6cc0e5958342b8dd5c4d3774f19,
+        type: 2}
+      propertyPath: _supply
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 114684870369117408, guid: 1fd8a6cc0e5958342b8dd5c4d3774f19,
+        type: 2}
+      propertyPath: _supply
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114684870369117408, guid: 1fd8a6cc0e5958342b8dd5c4d3774f19,
+        type: 2}
+      propertyPath: _fuel
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fd8a6cc0e5958342b8dd5c4d3774f19, type: 2}
@@ -1064,7 +1065,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1946467733 stripped
 MonoBehaviour:
@@ -1139,7 +1140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2026289818 stripped
 GameObject:

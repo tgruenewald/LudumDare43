@@ -88,6 +88,9 @@ public class GameStateManager : MonoBehaviour
         {
             if (tutorialOn == true && action == FleetManager.ShipActions.repair)
                 tutorial.TeachScout();
+
+            if (tutorialOn == true && action == FleetManager.ShipActions.scout)
+                tutorial.TeachEndTurn();
             fleetManager.CloseActionsExceptFor(ship);
         }
     }
@@ -125,7 +128,10 @@ public class GameStateManager : MonoBehaviour
         DialogManager.SacrificeShipMessage(false);
         jumpNumber++;
         if (jumpNumber > 0 && tutorialOn)
+        {
             tutorialOn = false;
+            tutorial.EndTutorial();
+        }
         gameState = GameState.defaultState;
 
         if (Jumped != null)
