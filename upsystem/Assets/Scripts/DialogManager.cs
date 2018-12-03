@@ -10,6 +10,8 @@ public class DialogManager: MonoBehaviour
     static GameObject sacrificeShipMsg;
 
     static GameObject dialog;
+    static GameObject shipSpecDialog;
+
     public static void TransferDialog(Ship transferShip1, Ship transferShip2 ) 
     {
         if (dialog != null)
@@ -35,6 +37,32 @@ public class DialogManager: MonoBehaviour
         Destroy(transferDialog);
     }  
 
+    public static void hideShipSpec()
+    {
+        if (shipSpecDialog != null) 
+        {
+            Destroy(shipSpecDialog);
+        }        
+    }
+    public static void showShipSpec(Ship ship) 
+    {
+        if (shipSpecDialog != null) 
+        {
+            Destroy(shipSpecDialog);
+        }
+        AudioManager.Instance.PlaySound(AudioClips.Click);
+        Debug.Log("Type: " + ship.GetType().Name);
+        shipSpecDialog = (GameObject) Instantiate(Resources.Load("prefab/"+ship.GetType().Name+"Spec"),new Vector3(0, 0, 0), Quaternion.identity); //GameObject.Find("TransferDialog");
+        shipSpecDialog.transform.SetParent(GameObject.Find("DialogCanvas").transform);
+        shipSpecDialog.transform.localPosition =  new Vector3(270f, 100f, 0f);
+        shipSpecDialog.transform.localScale = new Vector3(1f, 1f, 1f);
+
+        shipSpecDialog.transform.Find("ShipName").GetComponent<Text>().text = ship.Name;
+        shipSpecDialog.transform.Find("Crew").GetComponent<Text>().text = "Crew: " + ship.Crew + "/" + ship.MaxCrew;
+        shipSpecDialog.transform.Find("Supply").GetComponent<Text>().text = "Supply: " + ship.Supply + "/" + ship.MaxSupply;
+        shipSpecDialog.transform.Find("Fuel").GetComponent<Text>().text = "Fuel: " + ship.Fuel + "/" + ship.MaxFuel;
+    }
+
     public static void DisplayMessage(string msg) {
         AudioManager.Instance.PlaySound(AudioClips.Click);
         dialog = (GameObject) Instantiate(Resources.Load("prefab/StatusDialog"),new Vector3(0, 0, 0), Quaternion.identity); //GameObject.Find("TransferDialog");
@@ -54,6 +82,7 @@ public class DialogManager: MonoBehaviour
         }
         sacrificeShipMsg.GetComponent<Text>().enabled = turnOn;
     }
+
 
 
 

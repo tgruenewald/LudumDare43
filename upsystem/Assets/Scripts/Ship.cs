@@ -111,27 +111,32 @@ public class Ship : MonoBehaviour
             }
         }
         mStatsSliders.Show();
+        DialogManager.showShipSpec(this);
     }
 
     public void HideActions()
     {
         mActionSelector.Hide();
+        DialogManager.hideShipSpec();
     }
 
 	void OnMouseDown()
 	{
         // more game jam bandaid silliness!
         mStatsSliders.Show();
+        DialogManager.showShipSpec(this);
 	}
 
 	private void OnMouseOver()
     {
         mStatsSliders.Show();
+        DialogManager.showShipSpec(this);
     }
 
     private void OnMouseExit()
     {
         mStatsSliders.Hide();
+        DialogManager.hideShipSpec();
     }
 
 
