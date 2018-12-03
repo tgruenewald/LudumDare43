@@ -170,14 +170,52 @@ public class DialogManager: MonoBehaviour
         // show dialog
         // ship.supplyFound
         string whatFound = "nothing";
+        string wordEnding = "";
         if (ship.supplyFound > 0) {
-            whatFound = "" + ship.supplyFound + " supplies";
+            int found = ship.supplyFound;
+            if (ship.supplyFound > ship.ship.MaxSupply)
+            {
+                found = ship.ship.MaxSupply;
+            }
+            if (found == 1) 
+            {
+                wordEnding = "y";
+            }
+            else 
+            {
+                wordEnding = "ies";
+            }
+            whatFound = "" + found  + " suppl" + wordEnding;
         }
-        else if (ship.fuelFound > 0) {
-            whatFound = "" + ship.fuelFound + " fuel pods";
+        if (ship.fuelFound > 0) 
+        {
+            int found = ship.fuelFound;
+            if (ship.fuelFound > ship.ship.MaxFuel)
+            {
+            if (ship.fuelFound > ship.ship.MaxFuel)
+                found = ship.ship.MaxSupply;
+            }    
+            if (found == 1) 
+            {
+                wordEnding = "";
+            }
+            else 
+            {
+                wordEnding = "s";
+            }                    
+            whatFound = "" + found + " fuel pod" + wordEnding;
         }
-        else if (ship.shipsFound > 0) {
-            whatFound = "" + ship.shipsFound + " ships";
+        if (ship.shipsFound > 0) 
+        {
+            if (ship.shipsFound == 1) 
+            {
+                wordEnding = "";
+            }
+            else 
+            {
+                wordEnding = "s";
+            }  
+            whatFound = "" + ship.shipsFound + " ship" + wordEnding;
         }
         DialogManager.DisplayMessage(ship.ship.Name + " returned with " + whatFound);        
     }      

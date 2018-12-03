@@ -181,7 +181,8 @@ public class FleetManager : MonoBehaviour {
     void CreateShip()
     {
         GameObject shipObject = Instantiate(shipsWeCanSpawn[Random.Range(0, shipsWeCanSpawn.Count)]);
-        int index = Random.Range(0, canidateSpots.Count);
+        int index = Random.Range(0, canidateSpots.Count-1);
+        Debug.Log("index = " + index + "of " + canidateSpots.Count);
         Vector3 position = canidateSpots[index];
         canidateSpots.RemoveAt(index);
         shipObject.transform.parent = canvas.transform;
@@ -266,7 +267,7 @@ public class FleetManager : MonoBehaviour {
 
 
         int whatFind = Random.Range(0, 100);
-        if(whatFind < 20)
+        if(whatFind < 30)
         {
             Debug.Log("Found ship");
 
