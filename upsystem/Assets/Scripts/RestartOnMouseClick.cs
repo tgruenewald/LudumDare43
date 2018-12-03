@@ -6,19 +6,12 @@ using UnityEngine;
 
 public class RestartOnMouseClick : MonoBehaviour {
 
-    void OnMouseUp()
+    public void PlayAgain()
     {
+        SceneManager.LoadScene(0);
     }
     // Use this for initialization
     void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetMouseButtonUp(0))
-        {
-            SceneManager.LoadScene(0);
-        }
-    }
 }
