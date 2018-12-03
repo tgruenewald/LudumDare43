@@ -29,20 +29,22 @@ public class AudioManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-    }
-    // Use this for initialization
-    void Start()
-    {
         for (int i = 0; i < this.gameObject.transform.childCount; i++)
         {
             _sources.Add(this.transform.GetChild(i).gameObject.GetComponent<AudioSource>());
             Debug.Log(_sources[i].name);
         }
     }
+    // Use this for initialization
+    void Start()
+    {
+
+    }
 
     public void PlaySound(AudioClips clip)
     {
-        this._sources[(int)clip].Play();
+        if((int) clip < this._sources.Count)
+            this._sources[(int)clip].Play();
     }
 
     // Update is called once per frame

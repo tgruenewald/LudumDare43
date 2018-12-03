@@ -188,6 +188,8 @@ public class GameStateManager : MonoBehaviour
         camera.SetActive(false);
         victoryScreen.SetActive(true);
         gameState = GameState.gameOver;
+
+        GameObject.Find("FleetStat").SetActive(false);
     }
 
     void Defeat()
@@ -197,6 +199,8 @@ public class GameStateManager : MonoBehaviour
         camera.SetActive(false);
         defeatScreen.SetActive(true);
         gameState = GameState.gameOver;
+        GameObject.Find("FleetStat").SetActive(false);
+
     }
 
     void BearsArrive()
