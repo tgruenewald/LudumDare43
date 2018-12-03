@@ -58,6 +58,8 @@ public class Tutorial : MonoBehaviour
         highlight2.HighLight();
         
         DialogManager.DisplayMessage(trade);
+        DialogManager.DisplayMessage("The journey in hyperspace is long, and you will need 1 supply for each crew as well.");
+        DialogManager.DisplayMessage("To make the journey you will need to make a series of jumps.  Each ship must have at least 1 hyper fuel to jump.");
         DialogManager.DisplayMessage("The route is treacherous and Bearlon ambushers threaten us at every turn...");
         DialogManager.DisplayMessage("The time has come for our fleet to make its way to the home world.");
     }
