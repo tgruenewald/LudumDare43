@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GameStateManager : MonoBehaviour
 {
+    public Tutorial tutorial;
     public GameObject defeatScreen;
     public GameObject victoryScreen;
     Ship transferShip1;
@@ -11,6 +12,7 @@ public class GameStateManager : MonoBehaviour
     Button jumpButton;
     Button endRoundButton;
     GameObject bearFleet;
+    public bool tutorialOn = true;
     public enum GameState { sacrifice, transfer, defaultState, gameOver };
     public static GameStateManager Instance;
 
@@ -55,6 +57,7 @@ public class GameStateManager : MonoBehaviour
             // two ships are transfering
             if (gameState == GameState.transfer)
             {
+
                 // this is when the final ship gets selected
                 transferShip1 = ship;
                 gameState = GameState.defaultState;
@@ -83,6 +86,11 @@ public class GameStateManager : MonoBehaviour
         }
         else
         {
+            if (tutorialOn == true && action == FleetManager.ShipActions.repair)
+                tutorial.TeachScout();
+
+            if (tutorialOn == true && action == FleetManager.ShipActions.scout)
+                tutorial.TeachEndTurn();
             fleetManager.CloseActionsExceptFor(ship);
         }
     }
@@ -109,7 +117,7 @@ public class GameStateManager : MonoBehaviour
             TurnEnded();
         }
         fleetManager.UpdateScoutingShips();
-        if (turnNumber >= turnOfBearArrival)
+        if (turnNumber >= turnOfBearArrival || tutorialOn)
         {
             BearsArrive();
         }
@@ -119,6 +127,11 @@ public class GameStateManager : MonoBehaviour
     {
         DialogManager.SacrificeShipMessage(false);
         jumpNumber++;
+        if (jumpNumber > 0 && tutorialOn)
+        {
+            tutorialOn = false;
+            tutorial.EndTutorial();
+        }
         gameState = GameState.defaultState;
 
         if (Jumped != null)
@@ -216,5 +229,6 @@ public class GameStateManager : MonoBehaviour
         gameState = GameState.defaultState;
         ResetTurns();
         ResetJumps();
+        tutorial.TeachTrade();
     }
 }

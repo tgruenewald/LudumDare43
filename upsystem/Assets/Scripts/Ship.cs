@@ -14,7 +14,10 @@ public class Ship : MonoBehaviour
     private int _supply = 0;
     [SerializeField]
     private int _fuel = 0;
-    private bool _healthy = true;
+    [SerializeField]
+
+    public bool tutorialDisabled = false;
+    public bool _healthy = true;
     private ShipType _type = ShipType.Unknown;
     private ShipState _state = ShipState.Idle;
     private GameObject mHazardSprite;
@@ -92,7 +95,7 @@ public class Ship : MonoBehaviour
 
     void OnMouseUp()
     {
-        if(_state == ShipState.Idle)
+        if(_state == ShipState.Idle && !tutorialDisabled)
         {
             if (GameStateManager.Instance.GetState() == GameStateManager.GameState.defaultState)
             {

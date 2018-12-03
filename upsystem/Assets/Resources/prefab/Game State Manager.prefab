@@ -518,6 +518,7 @@ GameObject:
   - component: {fileID: 4779886833410510}
   - component: {fileID: 114874095985390104}
   - component: {fileID: 114157499196297526}
+  - component: {fileID: 114973227465655338}
   m_Layer: 0
   m_Name: Game State Manager
   m_TagString: Untagged
@@ -1588,6 +1589,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   minFuelFound: 1
   maxFuelFound: 10
   minSupplyFound: 1
@@ -1966,8 +1968,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775c5d85f3a554247882f8496085e2c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorial: {fileID: 114973227465655338}
   defeatScreen: {fileID: 1104627868393820}
   victoryScreen: {fileID: 1674386804754938}
+  tutorialOn: 1
   minTurnsForBearAttack: 2
   maxTurnsForBearAttack: 6
   minJumpsToWin: 3
@@ -2028,6 +2032,30 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114973227465655338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1612944860069754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 365b826460d020d4393d098e3801d28b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tradeShip1: {fileID: 0}
+  tradeShip2: {fileID: 0}
+  repairShip: {fileID: 0}
+  scoutShip1: {fileID: 0}
+  scoutShip2: {fileID: 0}
+  trade: One of these ships is low on fuel and the other is low on supply. You can
+    trade between them. Select one and press the transfer(yellow) icon.
+  repair: This ship is damaged. You can select it and hit the red button to repair.
+  scout: These other two ships can go out to scout. Select them and select the wave
+    button. They may return with more resources... or they may not return at all.
+    Only time will tell.
+  endTurn: When you are done assigning actions to your ships you can end the turn.
+  currentState: 0
 --- !u!212 &212027150165727758
 SpriteRenderer:
   m_ObjectHideFlags: 1
