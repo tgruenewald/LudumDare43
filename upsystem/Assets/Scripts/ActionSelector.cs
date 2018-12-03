@@ -63,6 +63,7 @@ public class ActionSelector : MonoBehaviour {
     // Set the buttons to show or not show depending on their current state
     public void Toggle()
     {
+        AudioManager.Instance.PlaySound(AudioClips.Click);
         GameStateManager.Instance.CloseActionsExceptFor(mShip);
         mActionContainer.SetActive(!mActionContainer.activeInHierarchy);
     }

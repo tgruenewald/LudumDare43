@@ -174,6 +174,7 @@ public class GameStateManager : MonoBehaviour
 
     void Defeat()
     {
+        AudioManager.Instance.PlaySound(AudioClips.RedAlert);
         GameObject camera = GameObject.Find("Main Camera");
         camera.SetActive(false);
         defeatScreen.SetActive(true);
@@ -182,6 +183,7 @@ public class GameStateManager : MonoBehaviour
 
     void BearsArrive()
     {
+        AudioManager.Instance.PlaySound(AudioClips.BearGrowl);
         gameState = GameState.sacrifice;
         endRoundButton.interactable = false;
         bearsArrived = true;
@@ -197,10 +199,15 @@ public class GameStateManager : MonoBehaviour
     }
     void Start () 
     {
-        GameObject jump = GameObject.Find("Jump");
+        GameObject jump = GameObject.FindWithTag("JumpButton");
         jumpButton = jump.GetComponent(typeof(Button)) as Button;
+        if(!jumpButton)
+        {
+            Debug.LogError("jump button not found");
+        }
 
         GameObject endRound = GameObject.Find("EndTurn");
+
         endRoundButton = endRound.GetComponent(typeof(Button)) as Button;
 
         bearFleet = GameObject.Find("BearFleet");
