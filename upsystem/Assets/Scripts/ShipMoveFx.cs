@@ -10,6 +10,6 @@ public class ShipMoveFx : MonoBehaviour {
 	void Start () 
     {
        Material mat = GetComponent<SpriteRenderer>().material;
-       mat.SetFloat("_Speed", Random.Range(speedMin, speedMax));
+        mat.SetFloat("_Speed", Random.Range(speedMin, speedMax));
     }
 }

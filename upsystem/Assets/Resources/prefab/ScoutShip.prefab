@@ -321,12 +321,9 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 224870043373603588}
-  - component: {fileID: 212084319606586796}
-  - component: {fileID: 61069623529710236}
-  - component: {fileID: 114131636021016784}
-  - component: {fileID: 114555255844253436}
-  - component: {fileID: 114747430934760168}
+  - component: {fileID: 224045065823509204}
+  - component: {fileID: 222266077410069796}
+  - component: {fileID: 114450188316441546}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -535,7 +532,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.853846, y: 2.323077}
+    oldSize: {x: 5.01, y: 3.02}
     newSize: {x: 3, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1223,17 +1220,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!114 &114747430934760168
+    m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114899352671369024
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
