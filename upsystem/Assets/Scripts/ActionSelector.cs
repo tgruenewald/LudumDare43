@@ -88,7 +88,7 @@ public class ActionSelector : MonoBehaviour {
     public void XferClicked()
     {
         GameStateManager.Instance.fleetManager.ShipAction(FleetManager.ShipActions.transfer, mShip);
-        AudioManager.Instance.PlaySound(AudioClips.Transfer);
+        AudioManager.Instance.PlaySound(AudioClips.TransferInit);
         Debug.Log("Xfer clicked.");  
 
     }

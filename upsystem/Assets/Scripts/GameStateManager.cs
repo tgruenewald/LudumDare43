@@ -77,6 +77,7 @@ public class GameStateManager : MonoBehaviour
         }
         else if (action == FleetManager.ShipActions.sacrifice)
         {
+            AudioManager.Instance.PlaySound(AudioClips.Sacrifice);
             fleetManager.HighlightShips(false);
             endRoundButton.interactable = true;
             gameState = GameState.defaultState;
@@ -227,7 +228,7 @@ public class GameStateManager : MonoBehaviour
             Debug.LogError("jump button not found");
         }
 
-        GameObject endRound = GameObject.Find("EndTurn");
+        GameObject endRound = GameObject.Find("EndTurn2");
 
         endRoundButton = endRound.GetComponent(typeof(Button)) as Button;
 

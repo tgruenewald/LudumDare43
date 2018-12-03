@@ -13,7 +13,10 @@ public enum AudioClips
     Sacrifice,
     Scout,
     Transfer,
-    ShipClick
+    ShipClick,
+    EndTurn,
+    TransferInit,
+    
 };
 
 public class AudioManager : MonoBehaviour
