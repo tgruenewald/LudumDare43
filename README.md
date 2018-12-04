@@ -9,4 +9,4 @@ The time has come for our fleet to make its way to a legendary planet, circling 
 ## Game Details
 [game rules](https://docs.google.com/document/d/1lbxMNSZ5dBbSSHIuTHbJXt-ts5Q2ygmWeMky6w0FI1Q/edit?usp=sharing)
 
-Play the game here:  http://ludum.daretogame.net/upstream/
+Play the game here:  http://upsystem.ga/
