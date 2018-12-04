@@ -198,7 +198,7 @@ public class DialogManager: MonoBehaviour
             if (ship.fuelFound > ship.ship.MaxFuel)
             {
             if (ship.fuelFound > ship.ship.MaxFuel)
-                found = ship.ship.MaxSupply;
+                found = ship.ship.MaxFuel;
             }    
             if (found == 1) 
             {
