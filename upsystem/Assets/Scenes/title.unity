@@ -790,7 +790,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1660186233}
-        m_MethodName: load_space_scene
+        m_MethodName: load_level_scene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

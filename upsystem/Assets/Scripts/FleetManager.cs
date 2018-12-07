@@ -178,10 +178,17 @@ public class FleetManager : MonoBehaviour {
         updateShipsScoutingCount();
     }
 
-    void CreateShip()
+    bool CreateShip()
     {
-        GameObject shipObject = Instantiate(shipsWeCanSpawn[Random.Range(0, shipsWeCanSpawn.Count)]);
-        int index = Random.Range(0, canidateSpots.Count);
+        if (canidateSpots.Count == 0) 
+        {
+            // no more room
+            Debug.Log("no more room to add a new ship");
+            return false;
+        }
+        GameObject shipObject = Instantiate(shipsWeCanSpawn[Random.Range(0, shipsWeCanSpawn.Count-1)]);
+        int index = Random.Range(0, canidateSpots.Count-1);
+        Debug.Log("index = " + index + "of " + canidateSpots.Count);
         Vector3 position = canidateSpots[index];
         canidateSpots.RemoveAt(index);
         shipObject.transform.parent = canvas.transform;
@@ -208,13 +215,19 @@ public class FleetManager : MonoBehaviour {
         ship.SetResource(Resource.Fuel, fuel);
         ship.SetResource(Resource.Supply, supply);
         ship.SetResource(Resource.Crew, crew);
+        return true;
     }
     void ReturnShip(ScoutingFinds ship)
     {
+        int shipCount = 0;
         for(int i = 0; i < ship.shipsFound; i++)
         {
-            CreateShip();
+            if (CreateShip())
+            {
+                shipCount++;
+            }
         }
+        ship.shipsFound = shipCount;
         ship.ship.gameObject.SetActive(true);
 
         fleet.Add(ship.ship);
@@ -228,6 +241,17 @@ public class FleetManager : MonoBehaviour {
     void Scout(ScoutingFinds scoutingFind)
     {
         Ship ship = scoutingFind.ship;
+        int whatFind = Random.Range(0, 100);
+        if(whatFind < 30)
+        {
+            Debug.Log("Found ship");
+
+            scoutingFind.shipsFound++;
+            if(scoutingFind.shipsFound == 2)
+            {
+                ReturnShip(scoutingFind);
+            }
+        }
         // fuel ship
     //    if (ship.Type == ShipType.Fuel)
         {
@@ -265,18 +289,8 @@ public class FleetManager : MonoBehaviour {
         }
 
 
-        int whatFind = Random.Range(0, 100);
-        if(whatFind < 20)
-        {
-            Debug.Log("Found ship");
-
-            scoutingFind.shipsFound++;
-            if(scoutingFind.shipsFound == 2)
-            {
-                ReturnShip(scoutingFind);
-            }
-        }
-        else if(whatFind < 40)
+        whatFind = Random.Range(0, 100);
+        if(whatFind < 40)
         {
             ReturnShip(scoutingFind);
         }

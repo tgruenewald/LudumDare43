@@ -25,8 +25,8 @@ public class GameStateManager : MonoBehaviour
     public int minTurnsForBearAttack = 4;
     public int maxTurnsForBearAttack = 8;
 
-    public int minJumpsToWin = 3;
-    public int maxJumpsToWin = 6;
+    public int minJumpsToWin = 14;
+    public int maxJumpsToWin = 18;
 
     public FleetManager fleetManager;
     bool bearsArrived = false;
@@ -179,6 +179,25 @@ public class GameStateManager : MonoBehaviour
     void ResetJumps()
     {
         jumpNumber = 0;
+        
+        int level = PlayerPrefs.GetInt("level");
+        Debug.Log("Level " + level);
+        switch(level)
+        {
+            case 1:
+                minJumpsToWin = 4;
+                maxJumpsToWin = 6;
+                break;
+            case 2:
+                minJumpsToWin = 8;
+                maxJumpsToWin = 12;
+                break;
+            case 3:
+                minJumpsToWin = 16;
+                maxJumpsToWin = 20;
+                break;
+        }
+        Debug.Log("min = " + minJumpsToWin + ", max = " + maxJumpsToWin);
         numberOfJumpsToWin = Random.Range(minJumpsToWin, maxJumpsToWin);
         updateJumpsToWin();
     }
