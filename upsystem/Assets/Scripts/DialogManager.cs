@@ -17,6 +17,7 @@ public class DialogManager: MonoBehaviour
 
     static bool showSpec = true;
 
+    
     public static void AddDialog(GameObject addedDialog)
     {
         dialogList.Add(addedDialog);
@@ -63,6 +64,9 @@ public class DialogManager: MonoBehaviour
     }
     public static void CloseTransferDialog() 
     {
+        GameStateManager.Instance.tradeLine.ClearLine();
+        GameStateManager.Instance.tradeLine.MakePermLine();
+
         if (GameStateManager.Instance.tutorialOn)
             GameStateManager.Instance.tutorial.TeachRepair();
         Debug.Log("transfer dialog close");

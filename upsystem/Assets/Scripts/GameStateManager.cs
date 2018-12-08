@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GameStateManager : MonoBehaviour
 {
+    public TradeLine tradeLine;
     public Tutorial tutorial;
     public GameObject defeatScreen;
     public GameObject victoryScreen;
-    Ship transferShip1;
-    Ship transferShip2;
+    [HideInInspector]
+    public Ship transferShip1;
+    [HideInInspector]
+    public Ship transferShip2;
     Button jumpButton;
     Button endRoundButton;
     GameObject bearFleet;
@@ -46,8 +49,6 @@ public class GameStateManager : MonoBehaviour
         turnOfBearArrival--;
     }
 
-
-
     public void ShipActionHandler(FleetManager.ShipActions action, Ship ship)
     {
         jumpButton.interactable = false;
@@ -57,15 +58,13 @@ public class GameStateManager : MonoBehaviour
             // two ships are transfering
             if (gameState == GameState.transfer)
             {
-
-                // this is when the final ship gets selected
                 transferShip1 = ship;
+                // this is when the final ship gets selected
                 gameState = GameState.defaultState;
                 Debug.Log(GameStateManager.Instance);
 
                 Debug.Log("The real transfer");
                 DialogManager.TransferDialog(transferShip2, transferShip1);
-
             }
             else
             {
@@ -113,6 +112,7 @@ public class GameStateManager : MonoBehaviour
             bears = true;
             tutorialOn = false;
             tutorial.EndTutorial();
+            turnOfBearArrival = 0;
         }
         fleetManager.HighlightShips(false);
         bearFleet.SetActive(false);
@@ -139,6 +139,12 @@ public class GameStateManager : MonoBehaviour
         updateJumpsToWin();
         gameState = GameState.defaultState;
 
+        if (tutorialOn)
+        {
+            tutorialOn = false;
+            tutorial.EndTutorial();
+
+        }
         if (Jumped != null)
         {
             Jumped();
@@ -264,5 +270,14 @@ public class GameStateManager : MonoBehaviour
         ResetTurns();
         ResetJumps();
         tutorial.TeachTrade();
+    }
+
+    void Update()
+    {
+        if(gameState == GameState.transfer && Input.GetMouseButtonUp(1))
+        {
+            tradeLine.ClearLine();
+            gameState = GameState.defaultState;
+        }
     }
 }

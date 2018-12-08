@@ -83,7 +83,7 @@ public class Ship : MonoBehaviour
 	void Update()
 	{
         mHazardSprite.SetActive(_fuel <= 0 || _supply <= 0 || _crew <= 0);
-        mDamageEffect.SetActive(!_healthy);
+        mDamageEffect.SetActive((!_healthy && _state != ShipState.Repairing));
 	}
 
 	public void EndShipTurn()

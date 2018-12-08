@@ -105,6 +105,7 @@ public class Tutorial : MonoBehaviour
 
     public void EndTutorial()
     {
+        
         HighlightShip highlight1 = tradeShip1.GetComponent<HighlightShip>();
         HighlightShip highlight2 = tradeShip2.GetComponent<HighlightShip>();
         HighlightShip highlight3 = repairShip.GetComponent<HighlightShip>();
